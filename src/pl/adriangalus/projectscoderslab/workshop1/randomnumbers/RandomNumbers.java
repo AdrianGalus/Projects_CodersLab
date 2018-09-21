@@ -7,6 +7,9 @@ public class RandomNumbers {
 
     public static void main(String[] args) {
 
+        play();
+    }
+    private static void play() {
         int randomNumber = random(100);
         System.out.println("Zgadnij liczbę (od 1 do 100). Jeżeli chcesz się poddać, wybierz 0");
         int userNumber;
