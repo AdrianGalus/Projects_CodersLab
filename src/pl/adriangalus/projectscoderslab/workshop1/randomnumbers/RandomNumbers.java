@@ -8,7 +8,6 @@ public class RandomNumbers {
     public static void main(String[] args) {
 
         int randomNumber = random(100);
-
         System.out.println("Zgadnij liczbę (od 1 do 100). Jeżeli chcesz się poddać, wybierz 0");
         int userNumber;
         while((userNumber = getData()) != 0) {
@@ -28,6 +27,7 @@ public class RandomNumbers {
         return generator.nextInt(size)+1;
     }
     private static int getData() {
+
         Scanner scanner = new Scanner(System.in);
         scanner.useDelimiter("\n");
         while(!scanner.hasNextInt()) {
