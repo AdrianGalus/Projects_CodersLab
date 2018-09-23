@@ -1,4 +1,4 @@
-package pl.adriangalus.projectscoderslab.workshop1.cube;
+package pl.adriangalus.projectscoderslab.workshop1.dice;
 
 import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
@@ -11,7 +11,7 @@ public class UniversalDice {
     }
     static int throwDice(String code) {
 
-        if(!code.matches("[0-9]*D([3-9]|([1-9][0-9]+))([\\+\\-]{0,1}[0-9]+){0,1}"))
+        if(!code.matches("[0-9]*D([3468]|(1[02]0?)|20)([\\+-]{0,1}[0-9]+){0,1}"))
         {
             throw new IllegalArgumentException("Kod ma być podany zgodnie ze wzorem xDy+z.");
         }
