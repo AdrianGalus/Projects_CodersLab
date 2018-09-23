@@ -7,11 +7,11 @@ public class UniversalDice {
 
     public static void main(String[] args) {
 
-        System.out.println("Wynik " + throwDice("7D6-1"));
+        System.out.println("Wynik " + throwDice("7D10-5"));
     }
     static int throwDice(String code) {
 
-        if(!code.matches("[0-9]*D([3468]|(1[02]0?)|20)([\\+-]{0,1}[0-9]+){0,1}"))
+        if(!code.matches("[0-9]*D([3468]|1[02]|20|100)([\\+-]?[0-9]+)?"))
         {
             throw new IllegalArgumentException("Kod ma być podany zgodnie ze wzorem xDy+z.");
         }
