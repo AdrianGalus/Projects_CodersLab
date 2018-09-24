@@ -13,6 +13,10 @@ public class PopularWords {
 
     public static void main(String[] args) {
 
+        searchPopularWords();
+    }
+    private static void searchPopularWords() {
+
         String fileName1 = "popular_words.txt";
         LinkedHashSet<String> popularWords = new LinkedHashSet<>();
         ArrayList<String> finalPopularWords = new ArrayList<>();
