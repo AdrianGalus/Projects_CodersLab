@@ -7,9 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.*;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Scanner;
+import java.util.*;
 
 public class PopularWords {
 
@@ -17,7 +15,7 @@ public class PopularWords {
 
         String fileName1 = "popular_words.txt";
         LinkedHashSet<String> popularWords = new LinkedHashSet<>();
-        LinkedHashSet<String> finalPopularWords = new LinkedHashSet<>();
+        ArrayList<String> finalPopularWords = new ArrayList<>();
         StringBuilder word = new StringBuilder();
         StringBuilder textFromWebsite = new StringBuilder();
         Connection connect = Jsoup.connect("http://www.onet.pl");
@@ -56,19 +54,24 @@ public class PopularWords {
             for(String s : popularWords) {
                 out.println(s);
             }
-            Scanner scanner = new Scanner(file);
-            while(scanner.hasNextLine()) {
-                finalPopularWords.add(scanner.nextLine());
-            }
             out.close();
+            Scanner scanner = new Scanner(file);
+            while(scanner.hasNext()) {
+                finalPopularWords.add(scanner.next());
+            }
         }
         catch(FileNotFoundException e) {
             e.printStackTrace();
         }
         String[] bannedWords = {"lecz", "może", "ponieważ", "dlaczego", "oraz", "przy", "przez", "przed",
                 "poza", "niemal", "mimo", "czym"};
-
-
+        for(int i = 0; i < finalPopularWords.size(); i++) {
+            for(String m : bannedWords) {
+                if(finalPopularWords.get(i).equals(m)) {
+                    finalPopularWords.remove(i);
+                }
+            }
+        }
         try {
             PrintWriter out2 = new PrintWriter("filtered_" + fileName1);
             for(String s : finalPopularWords) {
