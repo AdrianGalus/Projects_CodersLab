@@ -71,7 +71,7 @@ public class PopularWords {
                 "poza", "niemal", "mimo", "czym"};
         for(int i = 0; i < finalPopularWords.size(); i++) {
             for(String m : bannedWords) {
-                if(finalPopularWords.get(i).equals(m)) {
+                if(finalPopularWords.get(i).toUpperCase().equals(m.toUpperCase())) {
                     finalPopularWords.remove(i);
                 }
             }
