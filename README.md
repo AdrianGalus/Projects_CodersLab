@@ -12,8 +12,15 @@ There are my projects made in Coders Lab
       <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/src/pl/adriangalus/projectscoderslab/workshop1/words/PopularWords.java">Popular Words</a></li>
     </ol>
  </li>
+ <li>
+    Workshop 2
+    <ol>
+        <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/tree/master/src/pl/adriangalus/projectscoderslab/workshop2">Programming School</a>
+        </li>
+    </ol>
+ </li>
 </ol>
 
-Any interesting solution? I my opinion the regex used in Universal Dice (1.iv) is very interesting. The regex check data from user in only one step. In this way the rest of code is very simple and clear. 
+Any interesting solution? I my opinion the regex used in Universal Dice (1.iv) is very interesting. The regex checks data from user in only one step. In this way the rest of code is very simple and clear. 
 
 Yes, I like regex. :)
