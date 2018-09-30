@@ -13,3 +13,7 @@ There are my projects made in Coders Lab
     </ol>
  </li>
 </ol>
+
+Any interesting solution? I my opinion the regex used in Universal Dice (1.iv) is very interesting. The regex check data from user in only one step. In this way the rest of code is very simple and clear. 
+
+Yes, I like regex. :)
