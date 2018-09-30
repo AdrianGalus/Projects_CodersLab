@@ -1,7 +1,6 @@
 package pl.adriangalus.projectscoderslab.workshop2;
 
 import org.mindrot.jbcrypt.BCrypt;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +23,6 @@ public class User {
         this.email = email;
         this.setPassword(password);
     }
-
     public int getId() {
 
         return id;
@@ -57,20 +55,19 @@ public class User {
 
         return userGroupId;
     }
-
     public void saveToDB(Connection conn) throws SQLException {
 
         if(this.id == 0) {
-            String sql = "INSERT INTO users(username, email, password) VALUES (?, ?, ?);";
+            String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?);";
             String[] generatedColumns = { "ID" };
             PreparedStatement preparedStatement = conn.prepareStatement(sql, generatedColumns);
             preparedStatement.setString(1, this.userName);
             preparedStatement.setString(2, this.email);
             preparedStatement.setString(3, this.password);
             preparedStatement.executeUpdate();
-            ResultSet rs = preparedStatement.getGeneratedKeys();
-            if(rs.next()) {
-                this.id = rs.getInt(1);
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if(resultSet.next()) {
+                this.id = resultSet.getInt(1);
             }
         }
         else {
@@ -83,7 +80,7 @@ public class User {
             preparedStatement.executeUpdate();
         }
     }
-    public boolean delete(Connection conn) throws SQLException{
+    public void delete(Connection conn) throws SQLException{
 
         if(this.id != 0) {
             String sql = "DELETE FROM users WHERE id=?;";
@@ -91,9 +88,7 @@ public class User {
             preparedStatement.setInt(1, this.id);
             preparedStatement.executeUpdate();
             this.id = 0;
-            return true;
         }
-        return false;
     }
     public static User[] loadAllUsers(Connection conn) throws SQLException{
 
