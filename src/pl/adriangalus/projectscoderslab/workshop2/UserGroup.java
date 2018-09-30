@@ -17,6 +17,18 @@ public class UserGroup {
 
         this.name = name;
     }
+    public int getId() {
+
+        return id;
+    }
+    public void setName(String name) {
+
+        this.name = name;
+    }
+    public String getName() {
+
+        return name;
+    }
     public void saveToDB(Connection conn) throws SQLException{
 
         if(this.id == 0) {
@@ -48,7 +60,7 @@ public class UserGroup {
             this.id = 0;
         }
     }
-    public static UserGroup[] loadAllGroup(Connection conn) throws SQLException {
+    public static UserGroup[] loadAllGroups(Connection conn) throws SQLException {
 
         ArrayList<UserGroup> groups = new ArrayList<>();
         String sql = "SELECT * FROM user_group;";
