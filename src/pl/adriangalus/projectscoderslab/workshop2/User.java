@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
@@ -97,16 +98,10 @@ public class User {
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()) {
-            User loadedUser = new User();
-            loadedUser.id = resultSet.getInt("id");
-            loadedUser.userName = resultSet.getString("username");
-            loadedUser.password = resultSet.getString("password");
-            loadedUser.email = resultSet.getString("email");
+            User loadedUser = loadDataFromDB(resultSet);
             users.add(loadedUser);
         }
-        User[] uArray = new User[users.size()];
-        uArray = users.toArray(uArray);
-        return uArray;
+        return convertListToArray(users);
     }
     public static User loadById(Connection conn, int id) throws SQLException{
 
@@ -115,13 +110,38 @@ public class User {
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()) {
-            User loadedUser = new User();
-            loadedUser.id = resultSet.getInt("id");
-            loadedUser.userName = resultSet.getString("username");
-            loadedUser.password = resultSet.getString("password");
-            loadedUser.email = resultSet.getString("email");
+            User loadedUser = loadDataFromDB(resultSet);
             return loadedUser;
         }
         return null;
+    }
+    public static User[] loadAllByGroupId(Connection conn, int id) throws SQLException {
+
+        ArrayList<User> users = new ArrayList<>();
+        String sql = "SELECT * FROM users WHERE user_group_id=?;";
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()) {
+            User loadedUser = loadDataFromDB(resultSet);
+            users.add(loadedUser);
+        }
+        return convertListToArray(users);
+    }
+    private static User loadDataFromDB(ResultSet resultSet) throws SQLException {
+
+        User loadedUser = new User();
+        loadedUser.id = resultSet.getInt("id");
+        loadedUser.userName = resultSet.getString("username");
+        loadedUser.password = resultSet.getString("password");
+        loadedUser.email = resultSet.getString("email");
+        return loadedUser;
+
+    }
+    private static User[] convertListToArray(List<User> users) {
+
+        User[] uArray = new User[users.size()];
+        uArray = users.toArray(uArray);
+        return uArray;
     }
 }
