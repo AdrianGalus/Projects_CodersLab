@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Solution {
 
@@ -16,6 +17,9 @@ public class Solution {
     private String description;
     private int exerciseId;
     private int usersId;
+
+    private static final String DATE_FORMAT = "uuuu-MM-dd HH:mm";
+    private static final DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
     public Solution() {}
 
@@ -115,23 +119,10 @@ public class Solution {
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()) {
-            Solution loadSolution = new Solution();
-            loadSolution.id = resultSet.getInt("id");
-            loadSolution.created = LocalDateTime.parse(resultSet.getString("created"),
-                                    DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss"));
-            String maybeUpdated = resultSet.getString("updated");
-            if(maybeUpdated != null) {
-                loadSolution.updated = LocalDateTime.parse(maybeUpdated,
-                                        DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss"));
-            }
-            loadSolution.description = resultSet.getString("description");
-            loadSolution.exerciseId = resultSet.getInt("exercise_id");
-            loadSolution.usersId = resultSet.getInt("users_id");
+            Solution loadSolution = loadDataFromDB(resultSet);
             solutions.add(loadSolution);
         }
-        Solution[] uArray = new Solution[solutions.size()];
-        uArray = solutions.toArray(uArray);
-        return uArray;
+        return convertListToArray(solutions);
     }
     public static Solution loadById(Connection conn, int id) throws SQLException {
 
@@ -140,20 +131,55 @@ public class Solution {
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()) {
-            Solution loadSolution = new Solution();
-            loadSolution.id = resultSet.getInt("id");
-            loadSolution.created = LocalDateTime.parse(resultSet.getString("created"),
-                                    DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss"));
-            String maybeUpdated = resultSet.getString("updated");
-            if(maybeUpdated != null) {
-                loadSolution.updated = LocalDateTime.parse(maybeUpdated,
-                                        DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss"));
-            }
-            loadSolution.description = resultSet.getString("description");
-            loadSolution.exerciseId = resultSet.getInt("exercise_id");
-            loadSolution.usersId = resultSet.getInt("users_id");
+            Solution loadSolution = loadDataFromDB(resultSet);
             return loadSolution;
         }
         return null;
+    }
+    public static Solution[] loadAllByUserId(Connection conn, int id) throws SQLException {
+
+        String sql = "SELECT * FROM solution WHERE users_id=?;";
+        ArrayList<Solution> solutions = new ArrayList<>();
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()) {
+            Solution loadSolution = loadDataFromDB(resultSet);
+            solutions.add(loadSolution);
+        }
+        return convertListToArray(solutions);
+    }
+    public static Solution[] loadAllByExerciseId(Connection conn, int id) throws SQLException {
+
+        String sql = "SELECT * FROM solution WHERE exercise_id=?;";
+        ArrayList<Solution> solutions = new ArrayList<>();
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()) {
+            Solution loadSolution = loadDataFromDB(resultSet);
+            solutions.add(loadSolution);
+        }
+        return convertListToArray(solutions);
+    }
+    private static Solution loadDataFromDB(ResultSet resultSet) throws  SQLException{
+
+        Solution loadSolution = new Solution();
+        loadSolution.id = resultSet.getInt("id");
+        loadSolution.created = LocalDateTime.parse(resultSet.getString("created"), FORMAT);
+        String maybeUpdated = resultSet.getString("updated");
+        if(maybeUpdated != null) {
+            loadSolution.updated = LocalDateTime.parse(maybeUpdated, FORMAT);
+        }
+        loadSolution.description = resultSet.getString("description");
+        loadSolution.exerciseId = resultSet.getInt("exercise_id");
+        loadSolution.usersId = resultSet.getInt("users_id");
+        return loadSolution;
+    }
+    private static Solution[] convertListToArray(List<Solution> solutions) {
+
+        Solution[] uArray = new Solution[solutions.size()];
+        uArray = solutions.toArray(uArray);
+        return uArray;
     }
 }
