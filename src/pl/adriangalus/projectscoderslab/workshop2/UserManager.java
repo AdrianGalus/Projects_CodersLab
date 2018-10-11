@@ -13,18 +13,9 @@ public class UserManager {
         Scanner scanner = new Scanner(System.in);
         boolean active = true;
         while(active) {
-            try {
-                Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
-                users = User.loadAllUsers(conn);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            System.out.println("Id\tName");
-            int index = 1;
-            for (User user : users) {
-                System.out.println(index++ + "\t" + user.getUserName());
-            }
+            showUsers(users);
             Menu.showMenu("użytkownika");
+            int index;
             String name;
             String email;
             String password;
@@ -74,6 +65,20 @@ public class UserManager {
                     active = false;
                     break;
             }
+        }
+    }
+    static void showUsers(User[] users) {
+
+        try {
+            Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
+            users = User.loadAllUsers(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Id\tName");
+        int index = 1;
+        for (User user : users) {
+            System.out.println(index++ + "\t" + user.getUserName());
         }
     }
 }
