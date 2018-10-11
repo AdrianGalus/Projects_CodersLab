@@ -13,18 +13,9 @@ public class UserGroupManager {
         Scanner scanner = new Scanner(System.in);
         boolean active = true;
         while(active) {
-            try {
-                Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
-                groups = UserGroup.loadAllGroups(conn);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            System.out.println("Id\tName");
-            int index = 1;
-            for (UserGroup group : groups) {
-                System.out.println(index++ + "\t" + group.getName());
-            }
+            showGroups(groups);
             Menu.showMenu("grupy");
+            int index;
             String name;
             String choice = scanner.nextLine();
             switch (choice) {
@@ -66,6 +57,20 @@ public class UserGroupManager {
                     active = false;
                     break;
             }
+        }
+    }
+    static void showGroups(UserGroup[] groups) {
+
+        try {
+            Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
+            groups = UserGroup.loadAllGroups(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Id\tName");
+        int index = 1;
+        for (UserGroup group : groups) {
+            System.out.println(index++ + "\t" + group.getName());
         }
     }
 }
