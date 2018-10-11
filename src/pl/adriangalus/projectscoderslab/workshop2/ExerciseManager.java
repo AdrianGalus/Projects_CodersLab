@@ -33,7 +33,7 @@ public class ExerciseManager {
                     }
                     break;
                 case "edit":
-                    index = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id");
+                    index = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id", exercises);
                     title = ArgumentReader.getString(scanner, ArgumentReader.TITLE_PATTERN, "tytuł");
                     description = ArgumentReader.getString(scanner, ArgumentReader.DESCRIPTION_PATTERN, "opis");
                     exercises[index-1].setTitle(title);
@@ -47,7 +47,7 @@ public class ExerciseManager {
                     }
                     break;
                 case "delete":
-                    index = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id");
+                    index = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id", exercises);
                     try {
                         Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
                         exercises[index-1].delete(conn);
@@ -63,7 +63,7 @@ public class ExerciseManager {
             }
         }
     }
-    static void showExercises(Exercise[] exercises) {
+    static Exercise[] showExercises(Exercise[] exercises) {
 
         try {
             Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
@@ -76,5 +76,6 @@ public class ExerciseManager {
         for (Exercise exercise : exercises) {
             System.out.println(index++ + "\t" + exercise.getTitle());
         }
+        return exercises;
     }
 }
