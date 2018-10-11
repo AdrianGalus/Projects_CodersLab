@@ -18,15 +18,14 @@ public class Solution {
     private int exerciseId;
     private int usersId;
 
-    private static final String DATE_FORMAT = "uuuu-MM-dd HH:mm";
+    private static final String DATE_FORMAT = "uuuu-MM-dd HH:mm:ss";
     private static final DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
     public Solution() {}
 
-    public Solution(String description, int exerciseId, int usersId) {
+    public Solution(int exerciseId, int usersId) {
 
         this.created = LocalDateTime.now();
-        this.description = description;
         this.exerciseId = exerciseId;
         this.usersId = usersId;
     }
@@ -34,17 +33,17 @@ public class Solution {
 
         return id;
     }
-    public LocalDateTime getCreated() {
+    public String getCreated() {
 
-        return created;
+        return created.format(FORMAT);
     }
     public void setCreated(LocalDateTime created) {
 
         this.created = created;
     }
-    public LocalDateTime getUpdated() {
+    public String getUpdated() {
 
-        return updated;
+        return updated.format(FORMAT);
     }
     public void setUpdated(LocalDateTime updated) {
 
@@ -77,13 +76,12 @@ public class Solution {
     public void saveToDB(Connection conn) throws SQLException {
 
         if(this.id == 0) {
-            String sql = "INSERT INTO solution (created, description, exercise_id, users_id) VALUES (?, ?, ?, ?);";
+            String sql = "INSERT INTO solution (created, exercise_id, users_id) VALUES (?, ?, ?);";
             String[] generatedColumns = { "ID" };
             PreparedStatement preparedStatement = conn.prepareStatement(sql, generatedColumns);
             preparedStatement.setString(1, this.created.toString());
-            preparedStatement.setString(2, this.description);
-            preparedStatement.setInt(3, this.exerciseId);
-            preparedStatement.setInt(4, this.usersId);
+            preparedStatement.setInt(2, this.exerciseId);
+            preparedStatement.setInt(3, this.usersId);
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if(resultSet.next()) {
@@ -91,14 +89,13 @@ public class Solution {
             }
         }
         else {
-            String sql = "UPDATE solution SET (updated=?, description=?, exercise_id=?, users_id=? WHERE id=?;";
+            String sql = "UPDATE solution SET (updated=?, exercise_id=?, users_id=? WHERE id=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             this.updated = LocalDateTime.now();
             preparedStatement.setString(1, this.updated.toString());
-            preparedStatement.setString(2, this.description);
-            preparedStatement.setInt(3, this.exerciseId);
-            preparedStatement.setInt(4, this.usersId);
-            preparedStatement.setInt(5, this.id);
+            preparedStatement.setInt(2, this.exerciseId);
+            preparedStatement.setInt(3, this.usersId);
+            preparedStatement.setInt(4, this.id);
             preparedStatement.executeUpdate();
         }
     }
