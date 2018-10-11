@@ -13,7 +13,7 @@ public class UserManager {
         Scanner scanner = new Scanner(System.in);
         boolean active = true;
         while(active) {
-            showUsers(users);
+            users = showUsers(users);
             Menu.showMenu("użytkownika");
             int index;
             String name;
@@ -35,7 +35,7 @@ public class UserManager {
                     }
                     break;
                 case "edit":
-                    index = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id");
+                    index = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id", users);
                     name = ArgumentReader.getString(scanner, ArgumentReader.NAME_PATTERN, "imię");
                     email = ArgumentReader.getString(scanner, ArgumentReader.EMAIL_PATTERN, "email");
                     password = ArgumentReader.getString(scanner, ArgumentReader.PASSWORD_PATTERN, "hasło");
@@ -51,7 +51,7 @@ public class UserManager {
                     }
                     break;
                 case "delete":
-                    index = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id");
+                    index = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id", users);
                     try {
                         Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
                         users[index-1].delete(conn);
@@ -67,7 +67,7 @@ public class UserManager {
             }
         }
     }
-    static void showUsers(User[] users) {
+    static User[] showUsers(User[] users) {
 
         try {
             Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
@@ -80,5 +80,6 @@ public class UserManager {
         for (User user : users) {
             System.out.println(index++ + "\t" + user.getUserName());
         }
+        return users;
     }
 }
