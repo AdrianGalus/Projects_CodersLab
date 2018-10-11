@@ -13,7 +13,7 @@ public class UserGroupManager {
         Scanner scanner = new Scanner(System.in);
         boolean active = true;
         while(active) {
-            showGroups(groups);
+            groups = showGroups(groups);
             Menu.showMenu("grupy");
             int index;
             String name;
@@ -31,7 +31,7 @@ public class UserGroupManager {
                     }
                     break;
                 case "edit":
-                    index = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id");
+                    index = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id", groups);
                     name = ArgumentReader.getString(scanner, ArgumentReader.TITLE_PATTERN, "nazwę");
                     groups[index-1].setName(name);
                     try {
@@ -43,7 +43,7 @@ public class UserGroupManager {
                     }
                     break;
                 case "delete":
-                    index = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id");
+                    index = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id", groups);
                     try {
                         Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
                         groups[index-1].delete(conn);
@@ -59,7 +59,7 @@ public class UserGroupManager {
             }
         }
     }
-    static void showGroups(UserGroup[] groups) {
+    static UserGroup[] showGroups(UserGroup[] groups) {
 
         try {
             Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
@@ -72,5 +72,6 @@ public class UserGroupManager {
         for (UserGroup group : groups) {
             System.out.println(index++ + "\t" + group.getName());
         }
+        return groups;
     }
 }
