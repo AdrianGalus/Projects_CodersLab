@@ -12,16 +12,18 @@ class ArgumentReader {
     static final String TITLE_PATTERN = ".+";
     static final String DESCRIPTION_PATTERN = ".+";
 
-    static int getNumber(Scanner scanner, String pattern, String text) {
+    static int getIndex(Scanner scanner, String pattern, String text, Object[] object) {
 
-        String maybeNumber = "";
-        while (!maybeNumber.matches(pattern)) {
+        String maybeIndex;
+        while (true) {
             System.out.println(String.format("Podaj %s", text));
-            maybeNumber = scanner.nextLine();
+            maybeIndex = scanner.nextLine();
+            if(maybeIndex.matches(pattern) && Integer.parseInt(maybeIndex) <= object.length) {
+                break;
+            }
         }
-        return Integer.parseInt(maybeNumber);
+        return Integer.parseInt(maybeIndex);
     }
-
     static String getString(Scanner scanner, String pattern, String text) {
 
         String maybeString = "";
