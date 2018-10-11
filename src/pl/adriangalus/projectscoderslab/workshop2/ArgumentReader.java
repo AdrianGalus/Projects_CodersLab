@@ -9,6 +9,8 @@ class ArgumentReader {
     static final String EMAIL_PATTERN =
                     "[_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*\\.([a-zA-Z]{2,}){1}";
     static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+    static final String TITLE_PATTERN = ".+";
+    static final String DESCRIPTION_PATTERN = ".+";
 
     static int getNumber(Scanner scanner, String pattern, String text) {
 
