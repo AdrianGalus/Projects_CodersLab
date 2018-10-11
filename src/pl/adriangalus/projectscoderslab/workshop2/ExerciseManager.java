@@ -13,18 +13,9 @@ public class ExerciseManager {
         Scanner scanner = new Scanner(System.in);
         boolean active = true;
         while(active) {
-            try {
-                Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
-                exercises = Exercise.loadAllExercises(conn);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            System.out.println("Id\tName");
-            int index = 1;
-            for (Exercise exercise : exercises) {
-                System.out.println(index++ + "\t" + exercise.getTitle());
-            }
+            showExercises(exercises);
             Menu.showMenu("zadania");
+            int index;
             String title;
             String description;
             String choice = scanner.nextLine();
@@ -70,6 +61,20 @@ public class ExerciseManager {
                     active = false;
                     break;
             }
+        }
+    }
+    static void showExercises(Exercise[] exercises) {
+
+        try {
+            Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
+            exercises = Exercise.loadAllExercises(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Id\tTitle");
+        int index = 1;
+        for (Exercise exercise : exercises) {
+            System.out.println(index++ + "\t" + exercise.getTitle());
         }
     }
 }
