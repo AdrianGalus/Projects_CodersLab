@@ -8,7 +8,7 @@ public class Query {
 
     public static void main(String[] args) {
 
-        Solution sol = new Solution("test", 1, 1);
+        Solution sol = new Solution(1, 1);
         try(Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/programming_school?useTimezone=true&serverTimezone=GMT" +
                 "&useSSL=false&characterEncoding=utf8",
