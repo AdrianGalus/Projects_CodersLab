@@ -24,10 +24,7 @@ public class UserManager {
             for (User user : users) {
                 System.out.println(index++ + "\t" + user.getUserName());
             }
-            System.out.println("dodanie użytkownika -> add");
-            System.out.println("edycja użytkownika -> edit");
-            System.out.println("usunięcie użytkownika -> delete");
-            System.out.println("zakończenie programu -> quit");
+            Menu.showMenu("użytkownika");
             String name;
             String email;
             String password;
