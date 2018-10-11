@@ -16,16 +16,20 @@ public class SolutionManager {
             System.out.println("zakończenie programu -> quit");
             int exerciseId;
             int usersId;
+            User[] users = new User[0];
+            int userIdInDB;
+            int exerciseIdInDB;
             String choice = scanner.nextLine();
             switch (choice) {
                 case "add":
-                    User[] users = new User[0];
                     Exercise[] exercises = new Exercise[0];
-                    UserManager.showUsers(users);
-                    usersId = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id");
-                    ExerciseManager.showExercises(exercises);
-                    exerciseId = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id zadania");
-                    Solution solution = new Solution(exerciseId, usersId);
+                    users = UserManager.showUsers(users);
+                    usersId = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id", users);
+                    userIdInDB = users[usersId-1].getId();
+                    exercises = ExerciseManager.showExercises(exercises);
+                    exerciseId = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id zadania", exercises);
+                    exerciseIdInDB = exercises[exerciseId-1].getId();
+                    Solution solution = new Solution(exerciseIdInDB, userIdInDB);
                     try {
                         Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
                         solution.saveToDB(conn);
@@ -36,10 +40,12 @@ public class SolutionManager {
                     break;
                 case "view":
                     Solution[] solutions = new Solution[0];
-                    usersId = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id");
+                    users = UserManager.showUsers(users);
+                    usersId = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id", users);
+                    userIdInDB = users[usersId-1].getId();
                     try {
                         Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
-                        solutions = Solution.loadAllByUserId(conn, usersId);
+                        solutions = Solution.loadAllByUserId(conn, userIdInDB);
                     }
                     catch (SQLException e) {
                         e.printStackTrace();
