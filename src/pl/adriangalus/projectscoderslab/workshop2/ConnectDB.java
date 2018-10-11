@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectDB {
 
     static Connection conn = null;
-    
+
     public static Connection getConnection(String database, String user, String password) throws SQLException {
 
         if(conn != null) {

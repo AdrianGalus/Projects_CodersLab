@@ -9,39 +9,68 @@ public class UserManager {
     public static void main(String[] args) {
 
         User[] users = new User[0];
-        SQLHelper.registerDriver();
+        ConnectDB.registerDriver();
         Scanner scanner = new Scanner(System.in);
         boolean active = true;
         while(active) {
             try {
-                Connection conn = SQLHelper.getConnection("programming_school", "root", "coderslab");
+                Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
                 users = User.loadAllUsers(conn);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             System.out.println("Id\tName");
+            int index = 1;
             for (User user : users) {
-                System.out.println(user.getId() + "\t" + user.getUserName());
+                System.out.println(index++ + "\t" + user.getUserName());
             }
             System.out.println("dodanie użytkownika -> add");
             System.out.println("edycja użytkownika -> edit");
             System.out.println("usunięcie użytkownika -> delete");
             System.out.println("zakończenie programu -> quit");
+            String name;
+            String email;
+            String password;
             String choice = scanner.nextLine();
             switch (choice) {
                 case "add":
-                    System.out.println("Podaj imię");
-                    System.out.println("Podaj email");
-                    System.out.println("Podaj hasło");
+                    name = ArgumentReader.getString(scanner, ArgumentReader.NAME_PATTERN, "imię");
+                    email = ArgumentReader.getString(scanner, ArgumentReader.EMAIL_PATTERN, "email");
+                    password = ArgumentReader.getString(scanner,ArgumentReader.PASSWORD_PATTERN, "hasło");
+                    User user = new User(name, email, password);
+                    try {
+                        Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
+                        user.saveToDB(conn);
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case "edit":
-                    System.out.println("Podaj id");
-                    System.out.println("Podaj imię");
-                    System.out.println("Podaj email");
-                    System.out.println("Podaj hasło");
+                    index = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id");
+                    name = ArgumentReader.getString(scanner, ArgumentReader.NAME_PATTERN, "imię");
+                    email = ArgumentReader.getString(scanner, ArgumentReader.EMAIL_PATTERN, "email");
+                    password = ArgumentReader.getString(scanner, ArgumentReader.PASSWORD_PATTERN, "hasło");
+                    users[index-1].setUserName(name);
+                    users[index-1].setEmail(email);
+                    users[index-1].setPassword(password);
+                    try {
+                        Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
+                        users[index-1].saveToDB(conn);
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case "delete":
-                    System.out.println("Podaj id");
+                    index = ArgumentReader.getNumber(scanner, ArgumentReader.ID_PATTERN, "id");
+                    try {
+                        Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
+                        users[index-1].delete(conn);
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case "quit":
                     System.out.println("Nie będziesz tęsknić?");
