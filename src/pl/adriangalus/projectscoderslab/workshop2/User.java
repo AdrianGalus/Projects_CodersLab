@@ -59,12 +59,13 @@ public class User {
     public void saveToDB(Connection conn) throws SQLException {
 
         if(this.id == 0) {
-            String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?);";
+            String sql = "INSERT INTO users (username, email, password, user_group_id) VALUES (?, ?, ?, ?);";
             String[] generatedColumns = { "ID" };
             PreparedStatement preparedStatement = conn.prepareStatement(sql, generatedColumns);
             preparedStatement.setString(1, this.userName);
             preparedStatement.setString(2, this.email);
             preparedStatement.setString(3, this.password);
+            preparedStatement.setInt(4, this.userGroupId);
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if(resultSet.next()) {
@@ -72,12 +73,13 @@ public class User {
             }
         }
         else {
-            String sql = "UPDATE users SET username=?, email=?, password=? WHERE id=?;";
+            String sql = "UPDATE users SET username=?, email=?, password=?, user_group_id=? WHERE id=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, this.userName);
             preparedStatement.setString(2, this.email);
             preparedStatement.setString(3, this.password);
-            preparedStatement.setInt(4, this.id);
+            preparedStatement.setInt(4, this.userGroupId);
+            preparedStatement.setInt(5, this.id);
             preparedStatement.executeUpdate();
         }
     }
@@ -133,8 +135,9 @@ public class User {
         User loadedUser = new User();
         loadedUser.id = resultSet.getInt("id");
         loadedUser.userName = resultSet.getString("username");
-        loadedUser.password = resultSet.getString("password");
         loadedUser.email = resultSet.getString("email");
+        loadedUser.password = resultSet.getString("password");
+        loadedUser.userGroupId = resultSet.getInt("user_group_id");
         return loadedUser;
 
     }
