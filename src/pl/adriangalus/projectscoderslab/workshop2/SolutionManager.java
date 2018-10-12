@@ -11,9 +11,7 @@ public class SolutionManager {
         Scanner scanner = new Scanner(System.in);
         boolean active = true;
         while(active) {
-            System.out.println("dodanie rozwiązania -> add");
-            System.out.println("przeglądanie rozwiązań -> view");
-            System.out.println("zakończenie programu -> quit");
+            Menu.showSolutionMenu();
             int exerciseId;
             int usersId;
             User[] users = new User[0];
