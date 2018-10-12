@@ -159,7 +159,7 @@ public class Solution {
         }
         return convertListToArray(solutions);
     }
-    private static Solution loadDataFromDB(ResultSet resultSet) throws  SQLException{
+    static Solution loadDataFromDB(ResultSet resultSet) throws  SQLException{
 
         Solution loadSolution = new Solution();
         loadSolution.id = resultSet.getInt("id");
