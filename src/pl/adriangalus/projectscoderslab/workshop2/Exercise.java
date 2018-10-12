@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Exercise {
 
@@ -98,6 +99,22 @@ public class Exercise {
         }
         return null;
     }
+    public static Exercise[] loadExercisesNotMadeByThisUser(Connection conn, int userId) throws SQLException {
+
+        String sql = "SELECT exercise.id, exercise.title, exercise.description FROM exercise " +
+                "WHERE exercise.id NOT IN (SELECT exercise.id FROM exercise " +
+                "JOIN solution ON exercise.id = solution.exercise_id " +
+                "JOIN users ON users.id = solution.users_id WHERE users.id = ?);";
+        ArrayList<Exercise> loadedExercises = new ArrayList<>();
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setInt(1, userId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()) {
+            Exercise loadExercise = Exercise.loadDataFromDB(resultSet);
+            loadedExercises.add(loadExercise);
+        }
+        return convertListToArray(loadedExercises);
+    }
     static Exercise loadDataFromDB(ResultSet resultSet) throws  SQLException{
 
         Exercise loadExercise = new Exercise();
@@ -105,5 +122,11 @@ public class Exercise {
         loadExercise.title = resultSet.getString("title");
         loadExercise.description = resultSet.getString("description");
         return loadExercise;
+    }
+    private static Exercise[] convertListToArray(List<Exercise> exercises) {
+
+        Exercise[] uArray = new Exercise[exercises.size()];
+        uArray = exercises.toArray(uArray);
+        return uArray;
     }
 }
