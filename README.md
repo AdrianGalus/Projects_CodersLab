@@ -5,17 +5,17 @@ There are my projects made in Coders Lab
 <ol>
   <li>Workshop 1
     <ol>
-      <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/src/main/java/pl/adriangalus/projectscoderslab/workshop1/randomnumbers/RandomNumbers.java">Random Numbers</a></li>
-      <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/src/main/java/pl/adriangalus/projectscoderslab/workshop1/randomnumbers/RandomNumbers2.java">Random Numbers 2</a></li>
-      <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/src/main/java/pl/adriangalus/projectscoderslab/workshop1/lottogame/Lotto.java">Lotto</a></li>
-      <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/src/main/java/pl/adriangalus/projectscoderslab/workshop1/dice/UniversalDice.java">Universal Dice</a></li>
-      <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/src/main/java/pl/adriangalus/projectscoderslab/workshop1/words/PopularWords.java">Popular Words</a></li>
+      <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/Workshop1/src/main/java/workshop1/randomnumbers/RandomNumbers.java">Random Numbers</a></li>
+      <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/Workshop1/src/main/java/workshop1/randomnumbers/RandomNumbers2.java">Random Numbers 2</a></li>
+      <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/Workshop1/src/main/java/workshop1/lottogame/Lotto.java">Lotto</a></li>
+      <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/Workshop1/src/main/java/workshop1/dice/UniversalDice.java">Universal Dice</a></li>
+      <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/blob/master/Workshop1/src/main/java/workshop1/words/PopularWords.java">Popular Words</a></li>
     </ol>
  </li>
  <li>
     Workshop 2
     <ol>
-        <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/tree/master/src/main/java/pl/adriangalus/projectscoderslab/workshop2">Programming School</a>
+        <li><a href="https://github.com/AdrianGalus/Projects_CodersLab/tree/master/Workshop2/src/main/java/workshop2">Programming School</a>
         </li>
     </ol>
  </li>
