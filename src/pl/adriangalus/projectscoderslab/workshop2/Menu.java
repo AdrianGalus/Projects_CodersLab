@@ -9,4 +9,10 @@ public class Menu {
         System.out.println(String.format("usunięcie %s -> delete", text));
         System.out.println("zakończenie programu -> quit");
     }
+    static void showSolutionMenu() {
+
+        System.out.println("dodanie rozwiązania -> add");
+        System.out.println("przeglądanie rozwiązań -> view");
+        System.out.println("zakończenie programu -> quit");
+    }
 }
