@@ -79,10 +79,7 @@ public class Exercise {
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()) {
-            Exercise loadExercise = new Exercise();
-            loadExercise.id = resultSet.getInt("id");
-            loadExercise.title = resultSet.getString("title");
-            loadExercise.description = resultSet.getString("description");
+            Exercise loadExercise = loadDataFromDB(resultSet);
             exercises.add(loadExercise);
         }
         Exercise[] uArray = new Exercise[exercises.size()];
@@ -96,12 +93,17 @@ public class Exercise {
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()) {
-            Exercise loadExercise = new Exercise();
-            loadExercise.id = resultSet.getInt("id");
-            loadExercise.title = resultSet.getString("title");
-            loadExercise.description = resultSet.getString("description");
+            Exercise loadExercise = loadDataFromDB(resultSet);
             return loadExercise;
         }
         return null;
+    }
+    static Exercise loadDataFromDB(ResultSet resultSet) throws  SQLException{
+
+        Exercise loadExercise = new Exercise();
+        loadExercise.id = resultSet.getInt("id");
+        loadExercise.title = resultSet.getString("title");
+        loadExercise.description = resultSet.getString("description");
+        return loadExercise;
     }
 }
