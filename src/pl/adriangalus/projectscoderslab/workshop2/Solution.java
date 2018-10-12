@@ -76,15 +76,14 @@ public class Solution {
     public void saveToDB(Connection conn) throws SQLException {
 
         if(this.id == 0) {
-            String sql = "INSERT INTO solution (created, updated, description, exercise_id, users_id) " +
-                            "VALUES (?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO solution (created, description, exercise_id, users_id) " +
+                            "VALUES (?, ?, ?, ?);";
             String[] generatedColumns = { "ID" };
             PreparedStatement preparedStatement = conn.prepareStatement(sql, generatedColumns);
             preparedStatement.setString(1, this.created.toString());
-            preparedStatement.setString(2, this.updated.toString());
-            preparedStatement.setString(3, this.description.toString());
-            preparedStatement.setInt(4, this.exerciseId);
-            preparedStatement.setInt(5, this.usersId);
+            preparedStatement.setString(2, this.description.toString());
+            preparedStatement.setInt(3, this.exerciseId);
+            preparedStatement.setInt(4, this.usersId);
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if(resultSet.next()) {
