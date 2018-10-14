@@ -76,18 +76,4 @@ public class UserGroup {
         uArray = groups.toArray(uArray);
         return uArray;
     }
-    public static UserGroup loadById(Connection conn, int id) throws SQLException{
-
-        String sql = "SELECT * FROM user_group WHERE id=?;";
-        PreparedStatement preparedStatement = conn.prepareStatement(sql);
-        preparedStatement.setInt(1, id);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        if(resultSet.next()) {
-            UserGroup loadGroup = new UserGroup();
-            loadGroup.id = resultSet.getInt("id");
-            loadGroup.name = resultSet.getString("name");
-            return loadGroup;
-        }
-        return null;
-    }
 }
