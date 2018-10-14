@@ -4,6 +4,6 @@
     <title>footer</title>
 </head>
 <body>
-    STOPKA
+    Adrian Galus, contact: adriangalus8@gmail.com
 </body>
 </html>
