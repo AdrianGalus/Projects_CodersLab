@@ -43,6 +43,9 @@ public class Solution {
     }
     public String getUpdated() {
 
+        if(updated == null) {
+            return "-----";
+        }
         return updated.format(FORMAT);
     }
     public void setUpdated(LocalDateTime updated) {
@@ -117,6 +120,19 @@ public class Solution {
         ArrayList<Solution> solutions = new ArrayList<>();
         String sql = "SELECT * FROM solution;";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()) {
+            Solution loadSolution = loadDataFromDB(resultSet);
+            solutions.add(loadSolution);
+        }
+        return convertListToArray(solutions);
+    }
+    public static Solution[] loadAllSolutions(Connection conn, int limit) throws SQLException {
+
+        ArrayList<Solution> solutions = new ArrayList<>();
+        String sql = "SELECT * FROM solution ORDER BY created LIMIT ?;";
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setInt(1, limit);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()) {
             Solution loadSolution = loadDataFromDB(resultSet);
