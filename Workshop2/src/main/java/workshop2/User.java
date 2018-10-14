@@ -130,7 +130,7 @@ public class User {
         }
         return convertListToArray(users);
     }
-    private static User loadDataFromDB(ResultSet resultSet) throws SQLException {
+    static User loadDataFromDB(ResultSet resultSet) throws SQLException {
 
         User loadedUser = new User();
         loadedUser.id = resultSet.getInt("id");
@@ -141,7 +141,7 @@ public class User {
         return loadedUser;
 
     }
-    private static User[] convertListToArray(List<User> users) {
+    static User[] convertListToArray(List<User> users) {
 
         User[] uArray = new User[users.size()];
         uArray = users.toArray(uArray);
