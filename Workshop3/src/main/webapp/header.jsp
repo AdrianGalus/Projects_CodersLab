@@ -5,7 +5,6 @@
     <title>header</title>
 </head>
 <body>
-
     <a href="/UserGroup">User Group</a>
 </body>
 </html>
