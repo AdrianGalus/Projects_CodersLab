@@ -29,7 +29,7 @@ public class UserGroupDetails extends HttpServlet {
         int groupId = Integer.parseInt(maybeId);
         try {
             Connection conn = DbUtil.getConn();
-            users = UserGroup.loadUsersByGroupId(conn, groupId);
+            users = User.loadAllByGroupId(conn, groupId);
         }
         catch(SQLException e) {
             e.printStackTrace();
