@@ -5,7 +5,9 @@
     <title>UserDetails</title>
 </head>
 <body>
-    ID in DataBase: ${user.id}
+<%@ include file="header.jsp"%>
+<br/>
+ID in DataBase: ${user.id}
     <br/>
     Name: ${user.userName}
     <br/>
@@ -31,5 +33,7 @@
             </tr>
         </c:forEach>
     </table>
+<br/>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

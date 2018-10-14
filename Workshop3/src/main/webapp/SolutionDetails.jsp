@@ -5,6 +5,8 @@
     <title>SolutionDetails</title>
 </head>
 <body>
+<%@ include file="header.jsp"%>
+    <br/>
     ID in DataBase: ${solution.id}
     <br/>
     Created: ${solution.created}
@@ -18,5 +20,7 @@
     Description: ${solution.description}
     <br/>
     <a href="/MainApplication">Wróć</a>
+    <br/>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

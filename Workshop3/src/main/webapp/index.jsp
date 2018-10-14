@@ -5,6 +5,8 @@
     <title>index</title>
 </head>
 <body>
+<%@ include file="header.jsp"%>
+<br/>
     <table border=1">
         <tr>
             <th>Number</th>
@@ -23,5 +25,7 @@
         </tr>
         </c:forEach>
     </table>
+    <br/>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

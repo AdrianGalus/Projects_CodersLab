@@ -5,7 +5,9 @@
     <title>UserGroups</title>
 </head>
 <body>
-    <table border=1">
+<%@ include file="header.jsp"%>
+<br/>
+<table border=1">
         <tr>
             <th>Number</th>
             <th>Name</th>
@@ -19,5 +21,7 @@
             </tr>
         </c:forEach>
     </table>
+    <br/>
+<%@ include file="footer.jsp"%>
 </body>
 </html>
