@@ -13,7 +13,7 @@ public class ExerciseManager {
         Scanner scanner = new Scanner(System.in);
         boolean active = true;
         while(active) {
-            showExercises(exercises);
+            exercises = showExercises(exercises);
             Menu.showMenu("zadania");
             int index;
             String title;
