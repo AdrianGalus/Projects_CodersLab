@@ -5,13 +5,15 @@
          version="4.0">
 
     <servlet>
-        <display-name>MainApplication</display-name>
         <servlet-name>MainApplication</servlet-name>
         <servlet-class>workshop3.controller.MainApplication</servlet-class>
         <init-param>
             <param-name>number-solutions</param-name>
             <param-value>5</param-value>
         </init-param>
-
     </servlet>
+    <servlet-mapping>
+        <servlet-name>MainApplication</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 </web-app>
