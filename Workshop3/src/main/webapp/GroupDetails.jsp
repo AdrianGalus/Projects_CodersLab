@@ -15,10 +15,9 @@
             <tr>
                 <th>${count.index+1}</th>
                 <td>${user.userName}</td>
-                <td><a href="">Show details</a></td>
+                <td><a href="/UserDetails?id=${user.id}">Show details</a></td>
             </tr>
         </c:forEach>
     </table>
-<a href="/LoadUserGroups">Wróć</a>
 </body>
 </html>
