@@ -26,7 +26,7 @@ public class UserManager {
                     name = ArgumentReader.getString(scanner, ArgumentReader.NAME_PATTERN, "imię");
                     email = ArgumentReader.getString(scanner, ArgumentReader.EMAIL_PATTERN, "email");
                     password = ArgumentReader.getString(scanner,ArgumentReader.PASSWORD_PATTERN, "hasło");
-                    userGroupId = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id");
+                    userGroupId = ArgumentReader.getIndex(scanner, ArgumentReader.ID_PATTERN, "id grupy");
                     User user = new User(name, email, password, userGroupId);
                     try {
                         Connection conn = ConnectDB.getConnection("programming_school", "root", "coderslab");
