@@ -19,6 +19,7 @@ public class UserManager {
             String name;
             String email;
             String password;
+            String userGroupId;
             String choice = scanner.nextLine();
             switch (choice) {
                 case "add":
@@ -39,6 +40,7 @@ public class UserManager {
                     name = ArgumentReader.getString(scanner, ArgumentReader.NAME_PATTERN, "imię");
                     email = ArgumentReader.getString(scanner, ArgumentReader.EMAIL_PATTERN, "email");
                     password = ArgumentReader.getString(scanner, ArgumentReader.PASSWORD_PATTERN, "hasło");
+                    userGroupId = ArgumentReader.getString(scanner, ArgumentReader.ID_PATTERN, "id");
                     users[index-1].setUserName(name);
                     users[index-1].setEmail(email);
                     users[index-1].setPassword(password);
