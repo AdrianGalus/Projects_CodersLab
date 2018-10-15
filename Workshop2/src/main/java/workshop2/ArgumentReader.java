@@ -12,6 +12,19 @@ class ArgumentReader {
     static final String TITLE_PATTERN = ".+";
     static final String DESCRIPTION_PATTERN = ".+";
 
+    static int getIndex(Scanner scanner, String pattern, String text) {
+
+        String maybeIndex;
+        while (true) {
+            System.out.println(String.format("Podaj %s", text));
+            maybeIndex = scanner.nextLine();
+            if (maybeIndex.matches(pattern)) {
+                break;
+            }
+        }
+        return Integer.parseInt(maybeIndex);
+    }
+
     static int getIndex(Scanner scanner, String pattern, String text, Object[] object) {
 
         String maybeIndex;
