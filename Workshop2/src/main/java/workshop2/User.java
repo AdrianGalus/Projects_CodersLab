@@ -18,11 +18,12 @@ public class User {
 
     public User() {}
 
-    public User(String userName, String email, String password) {
+    public User(String userName, String email, String password, int userGroupId) {
 
         this.userName = userName;
         this.email = email;
         this.setPassword(password);
+        this.userGroupId = userGroupId;
     }
     public int getId() {
 
