@@ -7,11 +7,11 @@
 <body>
 <%@ include file="header.jsp"%>
     <br/>
-    ID in DataBase: ${solution.id}
-    <br/>
     Created: ${solution.created}
     <br/>
     Updated: ${solution.updated}
+    <br/>
+    ID in DataBase: ${solution.id}
     <br/>
     Exercise ID: ${solution.exerciseId}
     <br/>
@@ -19,7 +19,7 @@
     <br/>
     Description: ${solution.description}
     <br/>
-    <a href="/MainApplication">Wróć</a>
+    <a href="/Main">Wróć</a>
     <br/>
 <%@ include file="footer.jsp"%>
 </body>

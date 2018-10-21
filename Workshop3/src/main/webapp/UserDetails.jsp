@@ -6,10 +6,10 @@
 </head>
 <body>
 <%@ include file="header.jsp"%>
-<br/>
-ID in DataBase: ${user.id}
     <br/>
     Name: ${user.userName}
+    <br/>
+    ID in DataBase: ${user.id}
     <br/>
     User Group ID: ${user.userGroupId}
     <br/>

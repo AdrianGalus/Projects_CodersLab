@@ -10,6 +10,7 @@ import java.sql.SQLException;
 public class DbUtil {
 
     private static DataSource ds;
+
     public static Connection getConn() throws SQLException {
 
         return getInstance().getConnection();

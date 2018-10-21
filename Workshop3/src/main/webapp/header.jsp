@@ -5,7 +5,7 @@
     <title>header</title>
 </head>
 <body>
-    <a href="MainApplication">Main</a>
+    <a href="/Main">Main</a>
     <a href="/LoadUserGroups">User Group</a>
 </body>
 </html>
