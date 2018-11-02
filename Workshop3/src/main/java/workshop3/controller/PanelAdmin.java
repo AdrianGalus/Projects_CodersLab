@@ -1,5 +1,6 @@
 package workshop3.controller;
 
+import workshop2.Exercise;
 import workshop2.Solution;
 import workshop2.User;
 import workshop2.UserGroup;
@@ -41,6 +42,11 @@ public class PanelAdmin extends HttpServlet {
                     conn = DbUtil.getConn();
                     UserGroup[] userGroups = UserGroup.loadAllGroups(conn);
                     request.setAttribute("userGroups", userGroups);
+                    break;
+                case "exercise":
+                    conn = DbUtil.getConn();
+                    Exercise[] exercises = Exercise.loadAllExercises(conn);
+                    request.setAttribute("exercises", exercises);
                     break;
             }
         }
