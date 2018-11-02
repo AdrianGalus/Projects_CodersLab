@@ -17,13 +17,13 @@
     </form>
 </c:if>
 <c:if test="${activity == 'add' || activity == 'edit'}">
-    <form action="/solutionManager" method="post">
+    <form action="/userManager" method="post">
     <c:if test="${activity == 'edit'}">
         <input type="hidden" name="activity" value="edit">
         <input type="number" min="1" name="id" placeholder="Id">
         <br/>
     </c:if>
-    <c:if test="${activity == add}">
+    <c:if test="${activity == 'add'}">
         <input type="hidden" name="activity" value="add">
     </c:if>
         <input type="text" name="userName" placeholder="Username">
