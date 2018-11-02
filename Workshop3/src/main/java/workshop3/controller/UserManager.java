@@ -11,14 +11,14 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet(name = "UserManager")
+@WebServlet(name = "UserManager", urlPatterns = {"/userManager"})
 public class UserManager extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String activity = request.getParameter("activity");
         if(activity == null) {
-            getServletContext().getRequestDispatcher("/panelAdmin").forward(request, response);
+            response.sendRedirect("/panelAdmin");
         }
         int id;
         String userName;
@@ -61,15 +61,15 @@ public class UserManager extends HttpServlet {
         catch(SQLException e) {
             e.printStackTrace();
         }
-        getServletContext().getRequestDispatcher("/panelAdmin").forward(request, response);
+        response.sendRedirect("/panelAdmin");
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String activity = request.getParameter("activity");
         if(activity == null) {
-            getServletContext().getRequestDispatcher("/panelAdmin").forward(request, response);
+            response.sendRedirect("/panelAdmin");
         }
         SolutionManager.readActivity(activity, request);
-        getServletContext().getRequestDispatcher("/UserForm").forward(request, response);
+        getServletContext().getRequestDispatcher("/UserForm.jsp").forward(request, response);
     }
 }
