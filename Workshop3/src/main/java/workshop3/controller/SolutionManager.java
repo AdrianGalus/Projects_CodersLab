@@ -70,6 +70,11 @@ public class SolutionManager extends HttpServlet {
         if(activity == null) {
             getServletContext().getRequestDispatcher("/panelAdmin").forward(request, response);
         }
+        readActivity(activity, request);
+        getServletContext().getRequestDispatcher("/SolutionForm.jsp").forward(request, response);
+    }
+    public static void readActivity(String activity, HttpServletRequest request){
+
         switch(activity) {
             case "add":
                 request.setAttribute("activity", "add");
@@ -83,6 +88,5 @@ public class SolutionManager extends HttpServlet {
                 request.setAttribute("id", id);
                 break;
         }
-        getServletContext().getRequestDispatcher("/SolutionForm.jsp").forward(request, response);
     }
 }
