@@ -14,6 +14,7 @@ import java.sql.SQLException;
 
 @WebServlet(name = "SolutionManager", urlPatterns = {"/solutionManager"})
 public class SolutionManager extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String activity = request.getParameter("activity");
@@ -24,42 +25,38 @@ public class SolutionManager extends HttpServlet {
         int exerciseId;
         int usersId;
         Solution solution = new Solution();
-        switch(activity) {
-            case "add":
-                description = request.getParameter("description");
-                exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
-                usersId = Integer.parseInt(request.getParameter("usersId"));
-                solution.setDescription(description);
-                solution.setExerciseId(exerciseId);
-                solution.setUsersId(usersId);
-                try {
-                    Connection conn = DbUtil.getConn();
+        Connection conn;
+        try {
+            switch (activity) {
+                case "add":
+                    description = request.getParameter("description");
+                    exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
+                    usersId = Integer.parseInt(request.getParameter("usersId"));
+                    solution.setDescription(description);
+                    solution.setExerciseId(exerciseId);
+                    solution.setUsersId(usersId);
+                    conn = DbUtil.getConn();
                     solution.saveToDB(conn);
-                }
-                catch(SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "edit":
-                int id = Integer.parseInt(request.getParameter("id"));
-                description = request.getParameter("description");
-                exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
-                usersId = Integer.parseInt(request.getParameter("usersId"));
-                solution.setDescription(description);
-                solution.setExerciseId(exerciseId);
-                solution.setUsersId(usersId);
-                try {
-                    Connection conn = DbUtil.getConn();
+                    break;
+                case "edit":
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    description = request.getParameter("description");
+                    exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
+                    usersId = Integer.parseInt(request.getParameter("usersId"));
+                    solution.setId(id);
+                    solution.setDescription(description);
+                    solution.setExerciseId(exerciseId);
+                    solution.setUsersId(usersId);
+                    conn = DbUtil.getConn();
                     solution.saveToDB(conn);
-                }
-                catch(SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "delete":
+                    break;
+                case "delete":
+            }
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
         }
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String activity = request.getParameter("activity");
