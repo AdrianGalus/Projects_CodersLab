@@ -65,11 +65,7 @@ public class UserManager extends HttpServlet {
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String activity = request.getParameter("activity");
-        if(activity == null) {
-            response.sendRedirect("/panelAdmin");
-        }
-        SolutionManager.readActivity(activity, request);
+        SolutionManager.readActivity(request, response);
         getServletContext().getRequestDispatcher("/UserForm.jsp").forward(request, response);
     }
 }
