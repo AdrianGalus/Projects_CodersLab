@@ -21,6 +21,7 @@ public class SolutionManager extends HttpServlet {
         if(activity == null) {
             getServletContext().getRequestDispatcher("/panelAdmin").forward(request, response);
         }
+        int id;
         String description;
         int exerciseId;
         int usersId;
@@ -39,7 +40,7 @@ public class SolutionManager extends HttpServlet {
                     solution.saveToDB(conn);
                     break;
                 case "edit":
-                    int id = Integer.parseInt(request.getParameter("id"));
+                    id = Integer.parseInt(request.getParameter("id"));
                     description = request.getParameter("description");
                     exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
                     usersId = Integer.parseInt(request.getParameter("usersId"));
@@ -51,11 +52,17 @@ public class SolutionManager extends HttpServlet {
                     solution.saveToDB(conn);
                     break;
                 case "delete":
+                    id = Integer.parseInt(request.getParameter("id"));
+                    solution.setId(id);
+                    conn = DbUtil.getConn();
+                    solution.delete(conn);
+                    break;
             }
         }
         catch(SQLException e) {
             e.printStackTrace();
         }
+        getServletContext().getRequestDispatcher("/PanelAdmin.jsp").forward(request, response);
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
