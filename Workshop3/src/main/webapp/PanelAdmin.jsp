@@ -56,7 +56,8 @@
             <td>${user.userName}</td>
             <td>${user.email}</td>
             <td>${user.userGroupId}</td>
-            <td><a href="/userManager?activity=edit">Edit</a> <a href="/userManager?activity=delete">Delete</a></td>
+            <td><a href="/userManager?activity=edit">Edit</a>
+                <a href="/userManager?activity=delete&id=${user.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </table>
