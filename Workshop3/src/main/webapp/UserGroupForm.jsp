@@ -26,7 +26,7 @@
         <c:if test="${activity == 'add'}">
             <input type="hidden" name="activity" value="add">
         </c:if>
-        <input type="text" name="name" placeholder="Username">
+        <input type="text" name="name" placeholder="Name">
         <br/>
         <input type="submit" value="Save">
     </form>
