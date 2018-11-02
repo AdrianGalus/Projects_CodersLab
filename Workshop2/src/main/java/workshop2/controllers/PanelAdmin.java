@@ -4,7 +4,7 @@ import workshop2.models.Exercise;
 import workshop2.models.Solution;
 import workshop2.models.User;
 import workshop2.models.UserGroup;
-import workshop3.utils.DbUtil;
+import workshop2.utils.DbUtil;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

@@ -1,8 +1,7 @@
 package workshop2.controllers;
 
 import workshop2.models.Solution;
-import workshop3.utils.DbUtil;
-
+import workshop2.utils.DbUtil;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
