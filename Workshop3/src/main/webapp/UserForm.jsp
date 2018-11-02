@@ -11,8 +11,8 @@
     Are you sure to delete solution about ID ${id}?
     <form action="/userManager" method="post">
         <input type="hidden" name="activity" value="delete">
-        <input type="radio" name="del" value="${id}">yes
-        <input type="radio" name="del" value="0" checked>no
+        <input type="radio" name="id" value="${id}">yes
+        <input type="radio" name="id" value="0" checked>no
         <input type="submit" value="Ok">
     </form>
 </c:if>
