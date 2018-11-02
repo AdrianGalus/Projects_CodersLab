@@ -5,7 +5,7 @@
     <title>ExerciseForm</title>
 </head>
 <body>
-<%@ include file="../../../../Workshop3/src/main/webapp/header.jsp"%>
+<%@ include file="header.jsp"%>
 <br/>
 <c:if test="${activity == 'delete'}">
     Are you sure to delete solution about ID ${id}?
@@ -34,6 +34,6 @@
     </form>
 </c:if>
 <br/>
-<%@ include file="../../../../Workshop3/src/main/webapp/footer.jsp"%>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

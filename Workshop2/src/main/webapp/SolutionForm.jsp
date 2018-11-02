@@ -36,6 +36,6 @@
     </form>
 </c:if>
 <br/>
-<%@ include file="../../../../Workshop3/src/main/webapp/footer.jsp"%>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <title>UserDetails</title>
 </head>
 <body>
-<%@ include file="../../../../Workshop2/src/main/webapp/header.jsp"%>
+<%@ include file="header.jsp"%>
     <br/>
     Name: ${user.userName}
     <br/>

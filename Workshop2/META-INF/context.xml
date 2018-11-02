@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/">
+<Context>
     <Resource name="jdbc/programming_school"
               auth="Container"
               type="javax.sql.DataSource"
               username="root"
               password="coderslab"
-              driverClassName="com.mysql.cj.jdbc.Driver"
+              driverClassName="com.mysql.jdbc.Driver"
               connectionProperties="useUnicode=yes;characterEncoding=utf8;"
               url="jdbc:mysql://localhost:3306/programming_school"
               maxTotal="100"

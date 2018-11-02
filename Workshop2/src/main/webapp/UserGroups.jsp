@@ -5,7 +5,7 @@
     <title>UserGroups</title>
 </head>
 <body>
-<%@ include file="../../../../Workshop2/src/main/webapp/header.jsp"%>
+<%@ include file="header.jsp"%>
 <br/>
 <table border=1">
         <tr>
