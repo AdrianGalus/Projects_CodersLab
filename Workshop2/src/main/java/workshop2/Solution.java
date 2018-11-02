@@ -21,7 +21,10 @@ public class Solution {
     private static final String DATE_FORMAT = "uuuu-MM-dd HH:mm:ss";
     private static final DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
-    public Solution() {}
+    public Solution() {
+
+        this.created = LocalDateTime.now();
+    }
 
     public Solution(int exerciseId, int usersId) {
 
