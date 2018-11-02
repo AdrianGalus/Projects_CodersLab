@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet(name = "ExerciseManager")
+@WebServlet(name = "ExerciseManager", urlPatterns = {"/exerciseManager"})
 public class ExerciseManager extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
