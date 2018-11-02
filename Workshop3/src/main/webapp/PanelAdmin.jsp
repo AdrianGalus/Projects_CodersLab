@@ -13,6 +13,8 @@
     <a href="/panelAdmin?choice=user">User Manager</a>
     <br/>
     <a href="/panelAdmin?choice=userGroup">User Group manager</a>
+    <br/>
+    <a href="/panelAdmin?choice=exercises">Exercises</a>
     <br/><br/>
 <c:if test="${not empty solutions}">
     <h2>Solutions</h2>
@@ -83,6 +85,29 @@
     </c:forEach>
     </table>
     <a href="/userGroupManager?activity=add">Add new</a>
+    <br/>
+</c:if>
+<c:if test="${not empty exercises}">
+    <h2>Exercises</h2>
+    <br/>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+        <c:forEach items="${exercises}" var="exercise">
+            <tr>
+                <td>${exercise.id}</td>
+                <td>${exercise.title}</td>
+                <td>${exercise.description}</td>
+                <td><a href="/exerciseManager?activity=edit">Edit</a>
+                    <a href="/exerciseManager?activity=delete&id=${exercise.id}">Delete</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+    <a href="/exerciseManager?activity=add">Add new</a>
     <br/>
 </c:if>
 <br/>
