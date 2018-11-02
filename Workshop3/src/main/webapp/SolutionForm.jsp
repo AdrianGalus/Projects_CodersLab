@@ -23,7 +23,7 @@
         <input type="number" name="id" placeholder="id">
         <br/>
     </c:if>
-    <c:if test="${activity == add}">
+    <c:if test="${activity == 'add'}">
         <input type="hidden" name="activity" value="add">
     </c:if>
         <input type="text" name="description" placeholder="description">
