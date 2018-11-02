@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet(name = "UserGroupManager")
+@WebServlet(name = "UserGroupManager", urlPatterns = {"/userGroupManager"})
 public class UserGroupManager extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
