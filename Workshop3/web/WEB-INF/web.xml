@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>MainApplication</servlet-name>
-        <servlet-class>workshop3.controller.MainApplication</servlet-class>
+        <servlet-class>workshop2.controllers.MainApplication</servlet-class>
         <init-param>
             <param-name>number-solutions</param-name>
             <param-value>5</param-value>
