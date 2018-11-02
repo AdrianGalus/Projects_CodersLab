@@ -101,7 +101,7 @@ public class Solution {
             }
         }
         else {
-            String sql = "UPDATE solution SET (updated=?, description=?, exercise_id=?, users_id=? WHERE id=?;";
+            String sql = "UPDATE solution SET updated=?, description=?, exercise_id=?, users_id=? WHERE id=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             this.updated = LocalDateTime.now();
             preparedStatement.setString(1, this.updated.toString());
