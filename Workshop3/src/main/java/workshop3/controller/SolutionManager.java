@@ -25,7 +25,7 @@ public class SolutionManager extends HttpServlet {
         String description;
         int exerciseId;
         int usersId;
-        Solution solution = new Solution();
+        Solution solution;
         Connection conn;
         try {
             switch (activity) {
@@ -33,9 +33,8 @@ public class SolutionManager extends HttpServlet {
                     description = request.getParameter("description");
                     exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
                     usersId = Integer.parseInt(request.getParameter("usersId"));
+                    solution = new Solution(exerciseId, usersId);
                     solution.setDescription(description);
-                    solution.setExerciseId(exerciseId);
-                    solution.setUsersId(usersId);
                     conn = DbUtil.getConn();
                     solution.saveToDB(conn);
                     break;
@@ -44,15 +43,15 @@ public class SolutionManager extends HttpServlet {
                     description = request.getParameter("description");
                     exerciseId = Integer.parseInt(request.getParameter("exerciseId"));
                     usersId = Integer.parseInt(request.getParameter("usersId"));
+                    solution = new Solution(exerciseId, usersId);
                     solution.setId(id);
                     solution.setDescription(description);
-                    solution.setExerciseId(exerciseId);
-                    solution.setUsersId(usersId);
                     conn = DbUtil.getConn();
                     solution.saveToDB(conn);
                     break;
                 case "delete":
                     id = Integer.parseInt(request.getParameter("id"));
+                    solution = new Solution();
                     solution.setId(id);
                     conn = DbUtil.getConn();
                     solution.delete(conn);
