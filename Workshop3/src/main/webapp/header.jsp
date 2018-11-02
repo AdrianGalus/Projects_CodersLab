@@ -7,5 +7,6 @@
 <body>
     <a href="/Main">Main</a>
     <a href="/LoadUserGroups">User Group</a>
+    <a href="/panelAdmin?choice=default">Panel admin</a>
 </body>
 </html>
