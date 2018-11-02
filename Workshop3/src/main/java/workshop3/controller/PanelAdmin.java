@@ -43,7 +43,7 @@ public class PanelAdmin extends HttpServlet {
                     UserGroup[] userGroups = UserGroup.loadAllGroups(conn);
                     request.setAttribute("userGroups", userGroups);
                     break;
-                case "exercise":
+                case "exercises":
                     conn = DbUtil.getConn();
                     Exercise[] exercises = Exercise.loadAllExercises(conn);
                     request.setAttribute("exercises", exercises);
