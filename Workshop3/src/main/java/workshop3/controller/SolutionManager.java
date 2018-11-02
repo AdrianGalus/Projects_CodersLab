@@ -19,7 +19,7 @@ public class SolutionManager extends HttpServlet {
 
         String activity = request.getParameter("activity");
         if(activity == null) {
-            getServletContext().getRequestDispatcher("/panelAdmin").forward(request, response);
+            response.sendRedirect("/panelAdmin");
         }
         int id;
         String description;
@@ -65,15 +65,15 @@ public class SolutionManager extends HttpServlet {
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String activity = request.getParameter("activity");
-        if(activity == null) {
-            getServletContext().getRequestDispatcher("/panelAdmin").forward(request, response);
-        }
-        readActivity(activity, request);
+        readActivity(request, response);
         getServletContext().getRequestDispatcher("/SolutionForm.jsp").forward(request, response);
     }
-    public static void readActivity(String activity, HttpServletRequest request){
+    public static void readActivity(HttpServletRequest request, HttpServletResponse response) throws IOException{
 
+        String activity = request.getParameter("activity");
+        if(activity == null) {
+            response.sendRedirect("/panelAdmin");
+        }
         switch(activity) {
             case "add":
                 request.setAttribute("activity", "add");
