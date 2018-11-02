@@ -33,6 +33,10 @@ public class Solution {
 
         return id;
     }
+    public void setId(int id) {
+
+        this.id = id;
+    }
     public String getCreated() {
 
         return created.format(FORMAT);
@@ -64,7 +68,7 @@ public class Solution {
 
         return exerciseId;
     }
-    public void setExerciseId() {
+    public void setExerciseId(int exerciseId) {
 
         this.exerciseId = exerciseId;
     }
@@ -72,7 +76,7 @@ public class Solution {
 
         return usersId;
     }
-    public void setUsersId(int id) {
+    public void setUsersId(int usersId) {
 
         this.usersId = usersId;
     }
@@ -84,7 +88,7 @@ public class Solution {
             String[] generatedColumns = { "ID" };
             PreparedStatement preparedStatement = conn.prepareStatement(sql, generatedColumns);
             preparedStatement.setString(1, this.created.toString());
-            preparedStatement.setString(2, this.description.toString());
+            preparedStatement.setString(2, this.description);
             preparedStatement.setInt(3, this.exerciseId);
             preparedStatement.setInt(4, this.usersId);
             preparedStatement.executeUpdate();
