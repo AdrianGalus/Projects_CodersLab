@@ -77,7 +77,8 @@
         <tr>
             <td>${userGroup.id}</td>
             <td>${userGroup.name}</td>
-            <td><a href="/userGroupManager?activity=edit">Edit</a> <a href="/userGroupManager?activity=delete">Delete</a></td>
+            <td><a href="/userGroupManager?activity=edit">Edit</a>
+                <a href="/userGroupManager?activity=delete&id=${userGroup.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </table>
