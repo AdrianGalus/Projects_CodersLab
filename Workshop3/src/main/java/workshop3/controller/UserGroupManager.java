@@ -46,7 +46,7 @@ public class UserGroupManager extends HttpServlet {
                     userGroup = new UserGroup();
                     userGroup.setId(id);
                     conn = DbUtil.getConn();
-                    userGroup.saveToDB(conn);
+                    userGroup.delete(conn);
                     break;
             }
         }
