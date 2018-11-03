@@ -2,6 +2,7 @@ package pl.coderslab.models;
 
 public class Employee {
 
+    private int id;
     private String name;
     private String surname;
     private String address;
@@ -19,6 +20,14 @@ public class Employee {
         this.phone = phone;
         this.note = note;
         this.costPerHour = costPerHour;
+    }
+    public int getId() {
+
+        return id;
+    }
+    public void setId(int id) {
+
+        this.id = id;
     }
     public String getName() {
 

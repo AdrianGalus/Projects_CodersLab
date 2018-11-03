@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Vehicle {
 
+    private int id;
     private String model;
     private String mark;
     private int buildYear;
@@ -19,6 +20,14 @@ public class Vehicle {
         this.buildYear = buildYear;
         this.registrationNumber = registrationNumber;
         this.nextInspection = nextInspection;
+    }
+    public int getId() {
+
+        return id;
+    }
+    public void setId(int id) {
+
+        this.id = id;
     }
     public String getModel() {
 

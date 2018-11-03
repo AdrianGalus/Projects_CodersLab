@@ -4,14 +4,15 @@ import java.time.LocalDate;
 
 public class Order {
 
+    private int id;
     private LocalDate acceptanceForRepair;
     private LocalDate expectedStartOfRepair;
     private LocalDate startOfRepair;
-    private Employee employee;
+    private int employeeId;
     private String detailsOfProblem;
     private String detailsOfRepair;
-    private Status status;
-    private Vehicle vehicle;
+    private String status;
+    private int vehicleId;
     private double repairCost;
     private double replacementsCost;
     private double costPerHour;
@@ -20,15 +21,23 @@ public class Order {
     public Order() {}
 
     public Order(LocalDate acceptanceForRepair, LocalDate expectedStartOfRepair, Employee employee,
-                 String detailsOfProblem, Status status, Vehicle vehicle) {
+                 String detailsOfProblem, String status, Vehicle vehicle) {
 
         this.acceptanceForRepair = acceptanceForRepair;
         this.expectedStartOfRepair = expectedStartOfRepair;
-        this.employee = employee;
+        this.employeeId = employee.getId();
         this.detailsOfProblem = detailsOfProblem;
         this.status = status;
-        this.vehicle = vehicle;
-        this.costPerHour = this.employee.getCostPerHour();
+        this.vehicleId = vehicle.getId();
+        this.costPerHour = employee.getCostPerHour();
+    }
+    public int getId() {
+
+        return id;
+    }
+    public void setId(int id) {
+
+        this.id = id;
     }
     public LocalDate getAcceptanceForRepair() {
 
@@ -54,13 +63,13 @@ public class Order {
 
         this.startOfRepair = startOfRepair;
     }
-    public Employee getEmployee() {
+    public int getEmployeeId() {
 
-        return employee;
+        return employeeId;
     }
-    public void setEmployee(Employee employee) {
+    public void setEmployeeId(int employeeId) {
 
-        this.employee = employee;
+        this.employeeId = employeeId;
     }
     public String getDetailsOfProblem() {
 
@@ -78,21 +87,21 @@ public class Order {
 
         this.detailsOfRepair = detailsOfRepair;
     }
-    public Status getStatus() {
+    public String getStatus() {
 
         return status;
     }
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
 
         this.status = status;
     }
-    public Vehicle getVehicle() {
+    public int getVehicleId() {
 
-        return vehicle;
+        return vehicleId;
     }
-    public void setVehicle(Vehicle vehicle) {
+    public void setVehicleId(int vehicleId) {
 
-        this.vehicle = vehicle;
+        this.vehicleId = vehicleId;
     }
     public double getRepairCost() {
 

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Customer {
 
+    private int id;
     private String name;
     private String surname;
     private LocalDate birthDate;
@@ -15,6 +16,14 @@ public class Customer {
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
+    }
+    public int getId() {
+
+        return id;
+    }
+    public void setId(int id) {
+
+        this.id = id;
     }
     public String getName() {
 
