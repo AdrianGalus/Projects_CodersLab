@@ -12,20 +12,23 @@ public class Order {
     private String detailsOfRepair;
     private Status status;
     private Vehicle vehicle;
+    private double repairCost;
+    private double replacementsCost;
+    private double costPerHour;
+    private double numberOfHours;
 
     public Order() {}
 
-    public Order(LocalDate acceptanceForRepair, LocalDate expectedStartOfRepair, LocalDate startOfRepair,
-                 Employee employee, String detailsOfProblem, String detailsOfRepair, Status status, Vehicle vehicle) {
+    public Order(LocalDate acceptanceForRepair, LocalDate expectedStartOfRepair, Employee employee,
+                 String detailsOfProblem, Status status, Vehicle vehicle) {
 
         this.acceptanceForRepair = acceptanceForRepair;
         this.expectedStartOfRepair = expectedStartOfRepair;
-        this.startOfRepair = startOfRepair;
         this.employee = employee;
         this.detailsOfProblem = detailsOfProblem;
-        this.detailsOfRepair = detailsOfRepair;
         this.status = status;
         this.vehicle = vehicle;
+        this.costPerHour = this.employee.getCostPerHour();
     }
     public LocalDate getAcceptanceForRepair() {
 
@@ -36,6 +39,7 @@ public class Order {
         this.acceptanceForRepair = acceptanceForRepair;
     }
     public LocalDate getExpectedStartOfRepair() {
+
         return expectedStartOfRepair;
     }
     public void setExpectedStartOfRepair(LocalDate expectedStartOfRepair) {
@@ -43,6 +47,7 @@ public class Order {
         this.expectedStartOfRepair = expectedStartOfRepair;
     }
     public LocalDate getStartOfRepair() {
+
         return startOfRepair;
     }
     public void setStartOfRepair(LocalDate startOfRepair) {
@@ -88,5 +93,37 @@ public class Order {
     public void setVehicle(Vehicle vehicle) {
 
         this.vehicle = vehicle;
+    }
+    public double getRepairCost() {
+
+        return repairCost;
+    }
+    public void setRepairCost(double repairCost) {
+
+        this.repairCost = repairCost;
+    }
+    public double getReplacementsCost() {
+
+        return replacementsCost;
+    }
+    public void setReplacementsCost(double replacementsCost) {
+
+        this.replacementsCost = replacementsCost;
+    }
+    public double getCostPerHour() {
+
+        return costPerHour;
+    }
+    public void setCostPerHour(double costPerHour) {
+
+        this.costPerHour = costPerHour;
+    }
+    public double getNumberOfHours() {
+
+        return numberOfHours;
+    }
+    public void setNumberOfHours(double numberOfHours) {
+
+        this.numberOfHours = numberOfHours;
     }
 }
