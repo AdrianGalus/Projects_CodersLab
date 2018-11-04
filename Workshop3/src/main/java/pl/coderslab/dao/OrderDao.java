@@ -84,8 +84,7 @@ public class OrderDao {
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()) {
-            Order loadOrder = loadDataFromDB(resultSet);
-            return loadOrder;
+            return loadDataFromDB(resultSet);
         }
         return null;
     }
