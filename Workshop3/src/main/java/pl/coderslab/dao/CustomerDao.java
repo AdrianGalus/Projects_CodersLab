@@ -49,8 +49,7 @@ public class CustomerDao {
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()) {
-            Customer loadEmployee = loadDataFromDB(resultSet);
-            customers.add(loadEmployee);
+            customers.add(loadDataFromDB(resultSet));
         }
         return customers;
     }
