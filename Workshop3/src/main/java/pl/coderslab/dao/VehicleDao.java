@@ -62,7 +62,7 @@ public class VehicleDao {
     }
     public Vehicle loadById(Connection conn, int id) throws SQLException {
 
-        String sql = "SELECT * FROM vehicle WHERE id=?;";
+        String sql = "SELECT * FROM vehicles WHERE id=?;";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
