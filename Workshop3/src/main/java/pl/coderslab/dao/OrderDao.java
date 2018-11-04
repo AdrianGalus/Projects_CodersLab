@@ -72,8 +72,7 @@ public class OrderDao {
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()) {
-            Order loadOrder = loadDataFromDB(resultSet);
-            orders.add(loadOrder);
+            orders.add(loadDataFromDB(resultSet));
         }
         return orders;
     }
