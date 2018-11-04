@@ -52,8 +52,7 @@ public class EmployeeDao {
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()) {
-            Employee loadEmployee = loadDataFromDB(resultSet);
-            employees.add(loadEmployee);
+            employees.add(loadDataFromDB(resultSet));
         }
         return employees;
     }
