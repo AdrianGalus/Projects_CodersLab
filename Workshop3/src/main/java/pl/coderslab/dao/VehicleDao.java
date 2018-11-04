@@ -55,8 +55,7 @@ public class VehicleDao {
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()) {
-            Vehicle loadVehicle = loadDataFromDB(resultSet);
-            vehicles.add(loadVehicle);
+            vehicles.add(loadDataFromDB(resultSet));
         }
         return vehicles;
     }
