@@ -67,8 +67,7 @@ public class VehicleDao {
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()) {
-            Vehicle loadVehicle = loadDataFromDB(resultSet);
-            return loadVehicle;
+            return loadDataFromDB(resultSet);
         }
         return null;
     }
