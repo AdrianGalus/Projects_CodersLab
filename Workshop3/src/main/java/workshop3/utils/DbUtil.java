@@ -1,4 +1,4 @@
-package pl.coderslab.utils;
+package workshop3.utils;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

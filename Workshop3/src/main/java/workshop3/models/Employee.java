@@ -1,4 +1,4 @@
-package pl.coderslab.models;
+package workshop3.models;
 
 public class Employee {
 

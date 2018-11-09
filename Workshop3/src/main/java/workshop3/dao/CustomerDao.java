@@ -1,6 +1,6 @@
-package pl.coderslab.dao;
+package workshop3.dao;
 
-import pl.coderslab.models.Customer;
+import workshop3.models.Customer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

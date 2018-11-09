@@ -1,8 +1,8 @@
-package pl.coderslab.controllers;
+package workshop3.controllers;
 
-import pl.coderslab.dao.OrderDao;
-import pl.coderslab.models.Order;
-import pl.coderslab.utils.DbUtil;
+import workshop3.dao.OrderDao;
+import workshop3.models.Order;
+import workshop3.utils.DbUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
