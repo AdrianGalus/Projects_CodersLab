@@ -31,11 +31,11 @@ public class Comment {
 
         this.created = LocalDateTime.now();
     }
-    public Comment(@NotNull User user, @NotNull Tweet tweet, LocalDateTime created, @NotNull String text) {
+    public Comment(@NotNull User user, @NotNull Tweet tweet, @NotNull String text) {
 
         this.user = user;
         this.tweet = tweet;
-        this.created = created;
+        this.created = LocalDateTime.now();
         this.text = text;
     }
     public Long getId() {
