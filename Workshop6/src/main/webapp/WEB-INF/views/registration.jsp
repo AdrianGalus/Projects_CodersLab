@@ -8,7 +8,7 @@
     <form:form method="post" modelAttribute="user">
         <form:input path="userName" placeholder="userName"/>
         <form:errors path="userName"/>
-        <form:input path="password" placeholder="password"/>
+        <form:password path="password" placeholder="password"/>
         <form:errors path="password"/>
         <form:input path="email" placeholder="email"/>
         <form:errors path="email"/>
