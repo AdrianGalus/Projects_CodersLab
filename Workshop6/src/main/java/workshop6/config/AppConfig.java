@@ -49,9 +49,4 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         JpaTransactionManager tm = new JpaTransactionManager(emf);
         return tm;
     }
-    @Bean
-    public Validator validator() {
-
-        return new LocalValidatorFactoryBean();
-    }
 }
