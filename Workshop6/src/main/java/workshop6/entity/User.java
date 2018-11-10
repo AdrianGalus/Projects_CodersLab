@@ -41,7 +41,6 @@ public class User {
 
         this.enabled = false;
     }
-
     public User(@NotNull String userName, @NotNull String password, String email) {
 
         this.userName = userName;
@@ -72,6 +71,11 @@ public class User {
         return password;
     }
     public void setPassword(@NotNull String password) {
+
+        this.password = password;
+
+    }
+    public void hashPassword() {
 
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }

@@ -32,6 +32,7 @@ public class UserController {
             return "registration";
         }
         else {
+            user.hashPassword();
             userRepository.save(user);
             return "redirect:/home";
         }
