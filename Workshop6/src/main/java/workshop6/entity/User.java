@@ -1,16 +1,36 @@
 package workshop6.entity;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @NotBlank
     private String userName;
+    @NotNull
+    @NotBlank
     private String password;
+    @NotNull
+    @NotBlank
     private Boolean enabled;
+    @Email
     private String email;
+
 
     public User() {}
 
-    public User(Long id, String userName, String password, Boolean enabled, String email) {
+    public User(String userName, String password, Boolean enabled, String email) {
 
         this.id = id;
         this.userName = userName;

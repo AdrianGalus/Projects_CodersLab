@@ -1,13 +1,26 @@
 package workshop6.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+@Entity
 public class Tweet {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @NotBlank
     private User user;
+    @NotNull
+    @NotBlank
     private String text;
-    private LocalDateTime created;
+    private final LocalDateTime created;
 
     public Tweet() {
 
