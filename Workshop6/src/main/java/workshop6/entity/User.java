@@ -22,10 +22,11 @@ public class User {
     @NotNull
     @NotBlank
     private String password;
-    @NotNull
-    @NotBlank
     private Boolean enabled;
     @Email
+    @NotNull
+    @NotBlank
+    @Column(unique = true)
     private String email;
     @OneToMany(mappedBy = "user")
     private List<Tweet> tweets = new ArrayList<>();
@@ -36,13 +37,16 @@ public class User {
     @OneToMany(mappedBy = "sender")
     private List<Message> sendedMessages = new ArrayList<>();
 
-    public User() {}
+    public User() {
 
-    public User(@NotNull String userName, @NotNull String password, @NotNull Boolean enabled, String email) {
+        this.enabled = false;
+    }
+
+    public User(@NotNull String userName, @NotNull String password, String email) {
 
         this.userName = userName;
         this.setPassword(password);
-        this.enabled = enabled;
+        this.enabled = false;
         this.email = email;
     }
     public Long getId() {
@@ -71,12 +75,11 @@ public class User {
 
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
-    @NotNull
     public Boolean getEnabled() {
 
         return enabled;
     }
-    public void setEnabled(@NotNull Boolean enabled) {
+    public void setEnabled(Boolean enabled) {
 
         this.enabled = enabled;
     }
