@@ -36,9 +36,8 @@ public class User {
 
     public User() {}
 
-    public User(String userName, String password, Boolean enabled, String email) {
+    public User(@NotNull String userName, @NotNull String password, @NotNull Boolean enabled, String email) {
 
-        this.id = id;
         this.userName = userName;
         this.password = password;
         this.enabled = enabled;
@@ -52,27 +51,30 @@ public class User {
 
         this.id = id;
     }
+    @NotNull
     public String getUserName() {
 
         return userName;
     }
-    public void setUserName(String userName) {
+    public void setUserName(@NotNull String userName) {
 
         this.userName = userName;
     }
+    @NotNull
     public String getPassword() {
 
         return password;
     }
-    public void setPassword(String password) {
+    public void setPassword(@NotNull String password) {
 
         this.password = password;
     }
+    @NotNull
     public Boolean getEnabled() {
 
         return enabled;
     }
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(@NotNull Boolean enabled) {
 
         this.enabled = enabled;
     }
@@ -83,5 +85,37 @@ public class User {
     public void setEmail(String email) {
 
         this.email = email;
+    }
+    public List<Tweet> getTweets() {
+
+        return tweets;
+    }
+    public void setTweets(List<Tweet> tweets) {
+
+        this.tweets = tweets;
+    }
+    public List<Comment> getComments() {
+
+        return comments;
+    }
+    public void setComments(List<Comment> comments) {
+
+        this.comments = comments;
+    }
+    public List<Message> getReceivedMessages() {
+
+        return receivedMessages;
+    }
+    public void setReceivedMessages(List<Message> receivedMessages) {
+
+        this.receivedMessages = receivedMessages;
+    }
+    public List<Message> getSendedMessages() {
+
+        return sendedMessages;
+    }
+    public void setSendedMessages(List<Message> sendedMessages) {
+
+        this.sendedMessages = sendedMessages;
     }
 }
