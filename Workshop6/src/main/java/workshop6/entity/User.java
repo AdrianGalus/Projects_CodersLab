@@ -2,6 +2,7 @@ package workshop6.entity;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -68,7 +69,7 @@ public class User {
     }
     public void setPassword(@NotNull String password) {
 
-        this.password = password;
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
     @NotNull
     public Boolean getEnabled() {
