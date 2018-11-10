@@ -30,12 +30,12 @@ public class Tweet {
 
         this.created = LocalDateTime.now();
     }
-    public Tweet(Long id, User user, String text) {
+    public Tweet(@NotNull User user, @NotNull String text, List<Comment> comments) {
 
-        this.id = id;
         this.user = user;
         this.text = text;
         this.created = LocalDateTime.now();
+        this.comments = comments;
     }
     public Long getId() {
 
@@ -45,24 +45,34 @@ public class Tweet {
 
         this.id = id;
     }
+    @NotNull
     public User getUser() {
 
         return user;
     }
-    public void setUser(User user) {
+    public void setUser(@NotNull User user) {
 
         this.user = user;
     }
+    @NotNull
     public String getText() {
 
         return text;
     }
-    public void setText(String text) {
+    public void setText(@NotNull String text) {
 
         this.text = text;
     }
     public LocalDateTime getCreated() {
 
         return created;
+    }
+    public List<Comment> getComments() {
+
+        return comments;
+    }
+    public void setComments(List<Comment> comments) {
+
+        this.comments = comments;
     }
 }
