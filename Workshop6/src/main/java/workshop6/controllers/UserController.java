@@ -6,12 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import workshop6.entity.User;
 import workshop6.repository.UserRepository;
 
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -31,7 +33,7 @@ public class UserController {
         }
         else {
             userRepository.save(user);
-            return "redirect:/";
+            return "redirect:/home";
         }
     }
 }
