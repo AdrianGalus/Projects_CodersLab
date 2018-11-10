@@ -3,9 +3,11 @@ package workshop6.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -17,6 +19,7 @@ import javax.persistence.EntityManagerFactory;
 @EnableWebMvc
 @ComponentScan("workshop6")
 @EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "workshop6.repository")
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Override
