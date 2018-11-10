@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import workshop6.entity.User;
 import workshop6.repository.UserRepository;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -45,19 +47,25 @@ public class UserController {
         return "login";
     }
     @PostMapping("/login")
-    public String login(@Valid User user, BindingResult result) {
+    public String login(@Valid User user, BindingResult result, HttpSession session) {
 
         if(result.hasErrors()) {
             return "/login";
         }
         User loadUser = userRepository.findByEmail(user.getEmail());
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        if(bCryptPasswordEncoder.matches(user.getPassword(), loadUser.getPassword())) {
+        if(loadUser != null && bCryptPasswordEncoder.matches(user.getPassword(), loadUser.getPassword())) {
+            session.setAttribute("user", loadUser);
             return "redirect:/home";
         }
         else {
             return "/login";
         }
+    }
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
 
+        session.removeAttribute("user");
+        return "redirect:/home";
     }
 }
