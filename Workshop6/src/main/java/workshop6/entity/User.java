@@ -29,6 +29,10 @@ public class User {
     private List<Tweet> tweets = new ArrayList<>();
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "receiver")
+    private List<Message> receivedMessages = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "sender")
+    private List<Message> sendedMessages = new ArrayList<>();
 
     public User() {}
 
