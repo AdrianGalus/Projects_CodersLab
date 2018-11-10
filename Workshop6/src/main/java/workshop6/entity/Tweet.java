@@ -1,12 +1,12 @@
 package workshop6.entity;
 
 import org.hibernate.validator.constraints.NotBlank;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Tweet {
@@ -16,11 +16,15 @@ public class Tweet {
     private Long id;
     @NotNull
     @NotBlank
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
     @NotNull
     @NotBlank
     private String text;
     private final LocalDateTime created;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tweet")
+    private List<Comment> comments = new ArrayList<>();
 
     public Tweet() {
 
