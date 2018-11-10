@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "tweets")
 public class Tweet {
 
     @Id
@@ -23,7 +24,7 @@ public class Tweet {
     @NotBlank
     private String text;
     private final LocalDateTime created;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tweet")
+    @OneToMany(mappedBy = "tweet")
     private List<Comment> comments = new ArrayList<>();
 
     public Tweet() {

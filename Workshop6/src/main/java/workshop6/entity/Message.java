@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "messages")
 public class Message {
 
     @Id
@@ -17,14 +18,13 @@ public class Message {
     @NotNull
     @NotBlank
     private String text;
-    private Boolean read;
     @NotNull
     @NotBlank
+    @Column(name = "[read]")
+    private Boolean read;
     @ManyToOne
     @JoinColumn(name = "sender_id")
     private User sender;
-    @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "receiver_id")
     private User receiver;

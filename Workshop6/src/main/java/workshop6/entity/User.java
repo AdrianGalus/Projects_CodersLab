@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -25,13 +26,13 @@ public class User {
     private Boolean enabled;
     @Email
     private String email;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     private List<Tweet> tweets = new ArrayList<>();
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "receiver")
+    @OneToMany(mappedBy = "receiver")
     private List<Message> receivedMessages = new ArrayList<>();
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "sender")
+    @OneToMany(mappedBy = "sender")
     private List<Message> sendedMessages = new ArrayList<>();
 
     public User() {}
