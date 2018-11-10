@@ -41,7 +41,7 @@ public class User {
     public User(@NotNull String userName, @NotNull String password, @NotNull Boolean enabled, String email) {
 
         this.userName = userName;
-        this.password = password;
+        this.setPassword(password);
         this.enabled = enabled;
         this.email = email;
     }
