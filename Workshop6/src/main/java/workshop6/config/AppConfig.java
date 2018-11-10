@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import javax.persistence.EntityManagerFactory;
+import javax.validation.Validator;
 
 @Configuration
 @EnableWebMvc
@@ -47,5 +48,10 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
         JpaTransactionManager tm = new JpaTransactionManager(emf);
         return tm;
+    }
+    @Bean
+    public Validator validator() {
+
+        return new LocalValidatorFactoryBean();
     }
 }
