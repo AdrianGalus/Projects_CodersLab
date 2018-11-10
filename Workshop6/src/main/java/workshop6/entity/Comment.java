@@ -22,7 +22,7 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "tweet_id")
     private Tweet tweet;
-    private LocalDateTime created;
+    private final LocalDateTime created;
     @NotNull
     @NotBlank
     private String text;
@@ -31,12 +31,11 @@ public class Comment {
 
         this.created = LocalDateTime.now();
     }
-    public Comment(Long id, User user, Tweet tweet, String text) {
+    public Comment(@NotNull User user, @NotNull Tweet tweet, LocalDateTime created, @NotNull String text) {
 
-        this.id = id;
         this.user = user;
         this.tweet = tweet;
-        this.created = LocalDateTime.now();
+        this.created = created;
         this.text = text;
     }
     public Long getId() {
@@ -47,19 +46,21 @@ public class Comment {
 
         this.id = id;
     }
+    @NotNull
     public User getUser() {
 
         return user;
     }
-    public void setUser(User user) {
+    public void setUser(@NotNull User user) {
 
         this.user = user;
     }
+    @NotNull
     public Tweet getTweet() {
 
         return tweet;
     }
-    public void setTweet(Tweet tweet) {
+    public void setTweet(@NotNull Tweet tweet) {
 
         this.tweet = tweet;
     }
@@ -67,11 +68,12 @@ public class Comment {
 
         return created;
     }
+    @NotNull
     public String getText() {
 
         return text;
     }
-    public void setText(String text) {
+    public void setText(@NotNull String text) {
 
         this.text = text;
     }
