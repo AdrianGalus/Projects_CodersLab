@@ -7,7 +7,7 @@
 <body>
     <ol>
         <c:forEach items="${tweets}" var="tweet">
-            <li>${tweet} <a href="/tweet/details/${tweet.id}">show details</a> <a href="">show comments</a></li>
+            <li>${tweet} <a href="/tweet/details/${tweet.id}">show details</a></li>
         </c:forEach>
     </ol>
 </body>
