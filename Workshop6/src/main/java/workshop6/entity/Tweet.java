@@ -29,12 +29,11 @@ public class Tweet {
 
         this.created = LocalDateTime.now();
     }
-    public Tweet(User user, @NotNull String text, List<Comment> comments) {
+    public Tweet(User user, @NotNull String text) {
 
         this.user = user;
         this.text = text;
         this.created = LocalDateTime.now();
-        this.comments = comments;
     }
     public Long getId() {
 
