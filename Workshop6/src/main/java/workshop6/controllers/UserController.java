@@ -41,10 +41,16 @@ public class UserController {
         }
     }
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(Model model, HttpSession session) {
 
-        model.addAttribute("user", new User());
-        return "login";
+        User user = (User)session.getAttribute("user");
+        if(user == null) {
+            model.addAttribute("user", new User());
+            return "login";
+        }
+        else {
+            return "redirect:/home";
+        }
     }
     @PostMapping("/login")
     public String login(@Valid User user, BindingResult result, HttpSession session) {
