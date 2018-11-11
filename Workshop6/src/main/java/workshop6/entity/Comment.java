@@ -78,4 +78,14 @@ public class Comment {
 
         this.text = text;
     }
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", user=" + user +
+                ", tweet=" + tweet +
+                ", created=" + created +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }
