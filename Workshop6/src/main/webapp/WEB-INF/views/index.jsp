@@ -7,9 +7,19 @@
 <body>
     <c:if test="${not empty user}">
         Hello ${user.userName}! <a href="/user/logout">Logout</a>
+        <br/>
+        <a href="tweet/create">New tweet</a>
+        <br/>
+
     </c:if>
     <c:if test="${empty user}">
         Hello! <a href="/user/login">Login</a> <a href="/user/registration">Registration</a>
     </c:if>
+    <br/>
+    <ol>
+        <c:forEach items="${tweets}" var="tweet">
+            <li>${tweet}</li>
+        </c:forEach>
+    </ol>
 </body>
 </html>
