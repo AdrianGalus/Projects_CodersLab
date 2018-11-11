@@ -15,8 +15,6 @@ public class Tweet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -31,7 +29,7 @@ public class Tweet {
 
         this.created = LocalDateTime.now();
     }
-    public Tweet(@NotNull User user, @NotNull String text, List<Comment> comments) {
+    public Tweet(User user, @NotNull String text, List<Comment> comments) {
 
         this.user = user;
         this.text = text;
@@ -51,7 +49,7 @@ public class Tweet {
 
         return user;
     }
-    public void setUser(@NotNull User user) {
+    public void setUser(User user) {
 
         this.user = user;
     }
