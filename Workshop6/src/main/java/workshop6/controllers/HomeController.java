@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import workshop6.entity.Tweet;
 import workshop6.repository.TweetRepository;
 
 @Controller
@@ -17,6 +18,7 @@ public class HomeController {
     @GetMapping("")
     public String home(Model model) {
 
+        model.addAttribute("tweet", new Tweet());
         model.addAttribute("tweets", tweetRepository.findAll());
         return "index";
     }
