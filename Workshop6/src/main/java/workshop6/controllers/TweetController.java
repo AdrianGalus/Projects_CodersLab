@@ -26,14 +26,11 @@ public class TweetController {
     public String create(@Valid Tweet tweet, BindingResult result, HttpSession session) {
 
         User user = (User)session.getAttribute("user");
-        if(user == null) {
-            return "redirect:/home";
-        }
-        tweet.setUser(user);
-        if(result.hasErrors()) {
+        if(user == null || result.hasErrors()) {
             return "redirect:/home";
         }
         else {
+            tweet.setUser(user);
             tweetRepository.save(tweet);
             return "redirect:/home";
         }
