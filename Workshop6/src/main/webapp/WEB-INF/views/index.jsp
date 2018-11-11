@@ -18,11 +18,6 @@
     <c:if test="${empty user}">
         Hello! <a href="/user/login">Login</a> <a href="/user/registration">Registration</a>
     </c:if>
-    <br/>
-    <ol>
-        <c:forEach items="${tweets}" var="tweet">
-            <li>${tweet}</li>
-        </c:forEach>
-    </ol>
+    <jsp:include page="tweets.jsp"/>
 </body>
 </html>
