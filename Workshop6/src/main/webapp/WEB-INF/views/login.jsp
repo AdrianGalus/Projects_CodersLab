@@ -14,5 +14,6 @@
         <form:errors path="password"/>
         <input type="submit" value="Sign in"/>
     </form:form>
+    <a href="/user/registration">Registration</a>
 </body>
 </html>
