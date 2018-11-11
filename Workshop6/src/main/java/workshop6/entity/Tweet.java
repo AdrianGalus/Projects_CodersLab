@@ -1,7 +1,6 @@
 package workshop6.entity;
 
 import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -76,12 +75,8 @@ public class Tweet {
     }
     @Override
     public String toString() {
-        return "Tweet{" +
-                "id=" + id +
-                ", user=" + user +
-                ", text='" + text + '\'' +
-                ", created=" + created +
-                ", <a href=''>show comments</a>" +
-                '}';
+        return  "User: " + user.getUserName() +
+                ", created: " + created +
+                ", text: '" + text + '\'';
     }
 }
