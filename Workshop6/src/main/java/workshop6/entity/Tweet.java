@@ -29,7 +29,7 @@ public class Tweet {
         this.user = new User();
         this.created = LocalDateTime.now();
     }
-    public Tweet(@NotNull String text) {
+    public Tweet(String text) {
 
         this.user = new User();
         this.text = text;
@@ -43,7 +43,6 @@ public class Tweet {
 
         this.id = id;
     }
-    @NotNull
     public User getUser() {
 
         return user;
@@ -52,12 +51,11 @@ public class Tweet {
 
         this.user = user;
     }
-    @NotNull
     public String getText() {
 
         return text;
     }
-    public void setText(@NotNull String text) {
+    public void setText(String text) {
 
         this.text = text;
     }
@@ -75,7 +73,7 @@ public class Tweet {
     }
     @Override
     public String toString() {
-        return  "User: " + user.getUserName() +
+        return  user.getUserName() +
                 ", created: " + created +
                 ", text: '" + text + '\'';
     }
