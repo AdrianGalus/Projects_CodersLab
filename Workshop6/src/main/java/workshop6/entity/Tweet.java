@@ -27,11 +27,12 @@ public class Tweet {
 
     public Tweet() {
 
+        this.user = new User();
         this.created = LocalDateTime.now();
     }
-    public Tweet(User user, @NotNull String text) {
+    public Tweet(@NotNull String text) {
 
-        this.user = user;
+        this.user = new User();
         this.text = text;
         this.created = LocalDateTime.now();
     }
