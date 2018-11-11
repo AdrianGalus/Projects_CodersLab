@@ -7,7 +7,10 @@
 </head>
 <body>
     <c:if test="${not empty user}">
-        Hello ${user.userName}! <a href="/user/logout">Logout</a> <a href="/tweet/userTweets">My tweets</a>
+        Hello ${user.userName}!
+        <a href="/user/logout">Logout</a>
+        <a href="/tweet/userTweets">My tweets</a>
+        <a href="/message/received">Messages</a>
         <br/>
         <form:form action="/tweet/create" method="post" modelAttribute="tweet">
             <form:textarea path="text" placeholder="text"/>
