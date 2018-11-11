@@ -13,6 +13,7 @@ import workshop6.repository.TweetRepository;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -34,5 +35,16 @@ public class TweetController {
             tweetRepository.save(tweet);
             return "redirect:/home";
         }
+    }
+    @GetMapping("/userTweets")
+    public String showAllUsersTweets(HttpSession session, Model model) {
+
+        User user = (User)session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/home";
+        }
+        List<Tweet> tweets = tweetRepository.findByUserId(user.getId());
+        model.addAttribute("tweets", tweets);
+        return "tweets";
     }
 }
