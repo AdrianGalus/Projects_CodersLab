@@ -5,12 +5,10 @@
     <title>tweets</title>
 </head>
 <body>
-    All your tweets!
     <ol>
         <c:forEach items="${tweets}" var="tweet">
-            <li>${tweet}</li>
+            <li>${tweet} <a href="/tweet/details/${tweet.id}">show details</a> <a href="">show comments</a></li>
         </c:forEach>
     </ol>
-    <a href="/home">Back</a>
 </body>
 </html>
