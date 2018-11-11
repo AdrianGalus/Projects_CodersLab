@@ -76,4 +76,14 @@ public class Tweet {
 
         this.comments = comments;
     }
+    @Override
+    public String toString() {
+        return "Tweet{" +
+                "id=" + id +
+                ", user=" + user +
+                ", text='" + text + '\'' +
+                ", created=" + created +
+                ", <a href=''>show comments</a>" +
+                '}';
+    }
 }
