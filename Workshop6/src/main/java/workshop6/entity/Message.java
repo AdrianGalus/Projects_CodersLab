@@ -29,14 +29,16 @@ public class Message {
     @JoinColumn(name = "receiver_id")
     private User receiver;
 
-    public Message() {}
+    public Message() {
 
-    public Message(@NotNull String theme, @NotNull String text, Boolean read, @NotNull User sender,
+        this.read = false;
+    }
+    public Message(@NotNull String theme, @NotNull String text, @NotNull User sender,
                    @NotNull User receiver) {
 
         this.theme = theme;
         this.text = text;
-        this.read = read;
+        this.read = false;
         this.sender = sender;
         this.receiver = receiver;
     }
