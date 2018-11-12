@@ -20,15 +20,12 @@ public class Tweet {
     @NotNull
     @NotBlank
     private String text;
-    private final LocalDateTime created;
+    private LocalDateTime created;
     @OneToMany(mappedBy = "tweet")
     private List<Comment> comments = new ArrayList<>();
 
-    public Tweet() {
+    public Tweet() {}
 
-        this.user = new User();
-        this.created = LocalDateTime.now();
-    }
     public Tweet(String text) {
 
         this.user = new User();
