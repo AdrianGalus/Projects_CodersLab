@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 public class Tour {
 
     private Long id;
+    private Customer customer;
     private LocalDate orderDate;
     private LocalDateTime departureDate;
     private LocalDateTime arrivalDate;
@@ -17,9 +18,10 @@ public class Tour {
 
     public Tour() {}
 
-    public Tour(LocalDate orderDate, LocalDateTime departureDate, LocalDateTime arrivalDate, String destination,
-                BigDecimal distance, BigDecimal cost, Boolean paid) {
+    public Tour(Customer customer, LocalDate orderDate, LocalDateTime departureDate, LocalDateTime arrivalDate,
+                String destination, BigDecimal distance, BigDecimal cost, Boolean paid) {
 
+        this.customer = customer;
         this.orderDate = orderDate;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
@@ -37,6 +39,14 @@ public class Tour {
         if(this.id == null) {
             this.id = id;
         }
+    }
+    public Customer getCustomer() {
+
+        return customer;
+    }
+    public void setCustomer() {
+
+        this.customer = customer;
     }
     public LocalDate getOrderDate() {
 
