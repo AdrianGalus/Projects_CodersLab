@@ -8,7 +8,8 @@
     <a href="/message/sended">Sended</a>
     <ol>
         <c:forEach items="${receivedMessages}" var="message">
-            <li>${message.sender.userName} ${message.theme} <a href="/message/details/${message.id}">open</a></li>
+            <li>${message.sender.userName} ${message.read} ${message.theme}
+                <a href="/message/details/${message.id}">open</a></li>
         </c:forEach>
     </ol>
     <a href="/home">Back</a>
