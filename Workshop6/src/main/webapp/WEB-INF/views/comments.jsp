@@ -6,8 +6,8 @@
 </head>
 <body>
     <ol>
-        <c:forEach items="${comments}" var="comment">
-            <li>${comment}</li>
+        <c:forEach items="${comments}" var="loadComment">
+            <li>${loadComment}</li>
         </c:forEach>
     </ol>
 </body>
