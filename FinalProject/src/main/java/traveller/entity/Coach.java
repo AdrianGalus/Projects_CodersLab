@@ -17,14 +17,14 @@ public class Coach {
     private LocalDate productionDate;
     private LocalDate purchaseDate;
     private BigDecimal price;
-    private BigDecimal kmCounter;
+    private CoachKmCounter kmCounter;
     private Tank tank;
     private Integer seats;
 
     public Coach() {}
 
     public Coach(String registerNumber, String mark, String model, Driver driver1, Driver driver2, LocalDate productionDate,
-                 LocalDate purchaseDate, BigDecimal price, BigDecimal kmCounter, Tank tank, Integer seats) {
+                 LocalDate purchaseDate, BigDecimal price, CoachKmCounter kmCounter, Tank tank, Integer seats) {
 
         this.registerNumber = registerNumber;
         this.mark = mark;
@@ -135,17 +135,17 @@ public class Coach {
             this.price = new BigDecimal(price);
         }
     }
-    public BigDecimal getKmCounter() {
+    public CoachKmCounter getKmCounter() {
 
         return kmCounter;
     }
     public void setKmCounter(String kmCounter) {
 
         if(this.kmCounter == null) {
-            this.kmCounter = new BigDecimal(kmCounter);
+            this.kmCounter = new CoachKmCounter(new BigDecimal(kmCounter));
         }
         else {
-            this.kmCounter = this.kmCounter.add(new BigDecimal(kmCounter));
+            this.kmCounter.setKmCounter(kmCounter);
         }
     }
     public Tank getTank() {
