@@ -13,7 +13,7 @@ public class Customer {
     private String address;
     private String nip;
     private String regon;
-    private List<Tour> orders = new ArrayList<>();
+    private List<Tour> tours = new ArrayList<>();
 
     public Customer() {}
 
@@ -83,12 +83,12 @@ public class Customer {
 
         this.regon = regon;
     }
-    public List<Tour> getOrders() {
+    public List<Tour> getTours() {
 
-        return orders;
+        return tours;
     }
-    public void setOrders(Tour order) {
+    public void setTours(Tour order) {
 
-        this.orders.add(order);
+        this.tours.add(order);
     }
 }
