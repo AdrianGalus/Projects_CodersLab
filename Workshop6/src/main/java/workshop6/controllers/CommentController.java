@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import workshop6.entity.Comment;
 import workshop6.entity.Tweet;
 import workshop6.entity.User;
@@ -25,24 +23,23 @@ public class CommentController {
     @Autowired
     TweetRepository tweetRepository;
 
-    @PostMapping("/create/{id}")
+    @PostMapping("/create/{tweetId}")
     public String create(@Valid Comment comment, BindingResult result, HttpSession session,
-                         @PathVariable Long id, Model model) {
-
+                         @PathVariable Long tweetId, Model model) {
         User user = (User)session.getAttribute("user");
-        Tweet tweet = tweetRepository.findOne(id);
+        Tweet tweet = tweetRepository.findOne(tweetId);
+        model.addAttribute("tweet", tweet);
+        model.addAttribute("comments", commentRepository.findAllByTweetId(tweetId));
         if(user == null || tweet == null || result.hasErrors()) {
-            return "redirect:/home";
+            return "tweet";
         }
         else {
             comment.setUser(user);
             comment.setTweet(tweet);
-            System.out.println(comment.toString());
             commentRepository.save(comment);
-            model.addAttribute("tweet", tweet);
-            model.addAttribute("comments", commentRepository.findAllByTweetId(id));
             model.addAttribute("comment", new Comment());
-            return "redirect:/tweet/details/{id}";
+            return "redirect:/tweet/details/{tweetId}";
         }
     }
+
 }
