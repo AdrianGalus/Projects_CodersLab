@@ -13,6 +13,7 @@
         <module>Workshop2</module>
         <module>Workshop3</module>
         <module>Workshop6</module>
+        <module>FinalProject</module>
     </modules>
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
