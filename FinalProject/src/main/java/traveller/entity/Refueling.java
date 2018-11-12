@@ -85,13 +85,4 @@ public class Refueling {
 
         return coachKmCounter;
     }
-    public void setKmCounter(String kmCounter) {
-
-        if(this.coachKmCounter == null) {
-            this.coachKmCounter = new CoachKmCounter(new BigDecimal(kmCounter));
-        }
-        else {
-            this.coachKmCounter.setKmCounter(kmCounter);
-        }
-    }
 }
