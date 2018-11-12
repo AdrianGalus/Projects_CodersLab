@@ -1,14 +1,35 @@
 package traveller.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "refuelings")
 public class Refueling {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @NotBlank
     private LocalDateTime refuelingDate;
+    @NotNull
+    @NotBlank
     private BigDecimal fuelQuantity;
+    @NotNull
+    @NotBlank
     private BigDecimal cost;
+    @NotNull
+    @NotBlank
+    @ManyToOne
+    private Tank tank;
+    @NotNull
+    @NotBlank
+    @ManyToOne
     private CoachKmCounter coachKmCounter;
 
     public Refueling() {}
