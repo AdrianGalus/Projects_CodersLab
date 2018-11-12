@@ -85,4 +85,10 @@ public class Refueling {
 
         return coachKmCounter;
     }
+    public void setCoachKmCounter(CoachKmCounter coachKmCounter) {
+
+        if(this.coachKmCounter == null) {
+            this.coachKmCounter = coachKmCounter;
+        }
+    }
 }
