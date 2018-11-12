@@ -19,17 +19,13 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "tweet_id")
     private Tweet tweet;
-    private final LocalDateTime created;
+    private LocalDateTime created;
     @NotNull
     @NotBlank
     private String text;
 
-    public Comment() {
+    public Comment() {}
 
-        this.user = new User();
-        this.tweet = new Tweet();
-        this.created = LocalDateTime.now();
-    }
     public Comment(String text) {
 
         this.user = new User();
