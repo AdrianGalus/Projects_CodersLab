@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import workshop6.entity.Message;
 import workshop6.entity.User;
 import workshop6.repository.MessageRepository;
 import javax.servlet.http.HttpSession;
@@ -44,7 +45,10 @@ public class MessageController {
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model) {
 
-        model.addAttribute("message", messageRepository.findOne(id));
+        Message message = messageRepository.findOne(id);
+        model.addAttribute("message", message);
+        message.setRead(true);
+        messageRepository.save(message);
         return "message";
     }
 }
