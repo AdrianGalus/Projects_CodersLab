@@ -8,6 +8,7 @@ public class Tour {
 
     private Long id;
     private Customer customer;
+    private Coach coach;
     private LocalDate orderDate;
     private LocalDateTime departureDate;
     private LocalDateTime arrivalDate;
@@ -18,10 +19,11 @@ public class Tour {
 
     public Tour() {}
 
-    public Tour(Customer customer, LocalDate orderDate, LocalDateTime departureDate, LocalDateTime arrivalDate,
+    public Tour(Customer customer, Coach coach, LocalDate orderDate, LocalDateTime departureDate, LocalDateTime arrivalDate,
                 String destination, BigDecimal distance, BigDecimal cost, Boolean paid) {
 
         this.customer = customer;
+        this.coach = coach;
         this.orderDate = orderDate;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
@@ -47,6 +49,14 @@ public class Tour {
     public void setCustomer() {
 
         this.customer = customer;
+    }
+    public Coach getCoach() {
+
+        return coach;
+    }
+    public void setCoach(Coach coach) {
+
+        this.coach = coach;
     }
     public LocalDate getOrderDate() {
 
