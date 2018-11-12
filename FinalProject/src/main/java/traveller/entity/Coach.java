@@ -30,7 +30,7 @@ public class Coach {
         this.mark = mark;
         this.model = model;
         this.driver1 = driver1;
-        this.driver2 = driver2;
+        this.setDriver2(driver2);
         this.productionDate = productionDate;
         this.purchaseDate = purchaseDate;
         this.price = price;
