@@ -1,10 +1,17 @@
 package traveller.entity;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "salaries")
 public class Salary {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToOne
+    private User user;
     private BigDecimal salary;
     private BigDecimal hourlyWage;
 
@@ -22,6 +29,16 @@ public class Salary {
     public void setId(Long id) {
 
         this.id = id;
+    }
+    public User getUser() {
+
+        return user;
+    }
+    public void setUser(User user) {
+
+        if(this.user == null) {
+            this.user = user;
+        }
     }
     public BigDecimal getSalary() {
 
